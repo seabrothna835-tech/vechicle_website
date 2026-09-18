@@ -1,0 +1,578 @@
+{
+  "brands": [
+    {
+      "id": "1",
+      "brandName": "Toyota",
+      "description": "Japanese automotive manufacturer",
+      "country": "Japan",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "2",
+      "brandName": "Honda",
+      "description": "Japanese automotive manufacturer",
+      "country": "Japan",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "3",
+      "brandName": "Nissan",
+      "description": "Japanese automotive manufacturer",
+      "country": "Japan",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "4",
+      "brandName": "Mazda",
+      "description": "Japanese automotive manufacturer",
+      "country": "Japan",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "5",
+      "brandName": "Hyundai",
+      "description": "South Korean automotive manufacturer",
+      "country": "South Korea",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "6",
+      "brandName": "Kia",
+      "description": "South Korean automotive manufacturer",
+      "country": "South Korea",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "7",
+      "brandName": "BMW",
+      "description": "German luxury automotive manufacturer",
+      "country": "Germany",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "8",
+      "brandName": "Mercedes-Benz",
+      "description": "German luxury automotive manufacturer",
+      "country": "Germany",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "9",
+      "brandName": "Ford",
+      "description": "American automotive manufacturer",
+      "country": "United States",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "10",
+      "brandName": "Chevrolet",
+      "description": "American automotive manufacturer",
+      "country": "United States",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "11",
+      "brandName": "Volkswagen",
+      "description": "German automotive manufacturer",
+      "country": "Germany",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "12",
+      "brandName": "Audi",
+      "description": "German luxury automotive manufacturer",
+      "country": "Germany",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "13",
+      "brandName": "Lexus",
+      "description": "Japanese luxury automotive brand",
+      "country": "Japan",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "14",
+      "brandName": "Subaru",
+      "description": "Japanese automotive manufacturer",
+      "country": "Japan",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "15",
+      "brandName": "Tesla",
+      "description": "American electric vehicle manufacturer",
+      "country": "United States",
+      "status": "ACTIVE"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "categoryName": "Sedan",
+      "description": "Passenger car with four doors and a separate trunk",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "2",
+      "categoryName": "SUV",
+      "description": "Sport Utility Vehicle designed for passengers and mixed road conditions",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "3",
+      "categoryName": "Pickup Truck",
+      "description": "Vehicle with an open cargo bed for transporting goods",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "4",
+      "categoryName": "Hatchback",
+      "description": "Compact passenger vehicle with a rear liftgate",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "5",
+      "categoryName": "Coupe",
+      "description": "Sporty passenger car generally designed with two doors",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "6",
+      "categoryName": "MPV",
+      "description": "Multi-Purpose Vehicle designed for carrying multiple passengers",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "7",
+      "categoryName": "Van",
+      "description": "Large vehicle designed for transporting passengers or cargo",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "8",
+      "categoryName": "Crossover",
+      "description": "Vehicle combining features of an SUV and a passenger car",
+      "status": "ACTIVE"
+    }
+  ],
+  "models": [
+    {
+      "id": "1",
+      "modelName": "Camry",
+      "brandId": 1,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "2",
+      "modelName": "Corolla",
+      "brandId": 1,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "3",
+      "modelName": "RAV4",
+      "brandId": 1,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "4",
+      "modelName": "Hilux",
+      "brandId": 1,
+      "categoryId": 3,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "5",
+      "modelName": "Civic",
+      "brandId": 2,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "6",
+      "modelName": "CR-V",
+      "brandId": 2,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "7",
+      "modelName": "Accord",
+      "brandId": 2,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "8",
+      "modelName": "X5",
+      "brandId": 7,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "9",
+      "modelName": "3 Series",
+      "brandId": 7,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "10",
+      "modelName": "C-Class",
+      "brandId": 8,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "11",
+      "modelName": "GLC",
+      "brandId": 8,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "12",
+      "modelName": "Model 3",
+      "brandId": 15,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "13",
+      "modelName": "Model Y",
+      "brandId": 15,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "14",
+      "modelName": "Tucson",
+      "brandId": 5,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "15",
+      "modelName": "Elantra",
+      "brandId": 5,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "16",
+      "modelName": "Santa Fe",
+      "brandId": 5,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "17",
+      "modelName": "Sportage",
+      "brandId": 6,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "18",
+      "modelName": "CX-5",
+      "brandId": 4,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "19",
+      "modelName": "Mazda3",
+      "brandId": 4,
+      "categoryId": 1,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "20",
+      "modelName": "Forester",
+      "brandId": 14,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "21",
+      "modelName": "Impreza",
+      "brandId": 14,
+      "categoryId": 4,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "22",
+      "modelName": "Mustang",
+      "brandId": 9,
+      "categoryId": 5,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23",
+      "modelName": "Ranger",
+      "brandId": 9,
+      "categoryId": 3,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "24",
+      "modelName": "Golf",
+      "brandId": 11,
+      "categoryId": 4,
+      "year": 2025,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "25",
+      "modelName": "Tiguan",
+      "brandId": 11,
+      "categoryId": 2,
+      "year": 2025,
+      "status": "ACTIVE"
+    }
+  ],
+  "statuses": [
+    {
+      "id": "1",
+      "value": "IN_STOCK",
+      "label": "In Stock"
+    },
+    {
+      "id": "2",
+      "value": "SOLD",
+      "label": "Sold"
+    },
+    {
+      "id": "3",
+      "value": "RESERVED",
+      "label": "Reserved"
+    },
+    {
+      "id": "4",
+      "value": "SERVICE",
+      "label": "Service"
+    },
+    {
+      "id": "5",
+      "value": "AVAILABLE",
+      "label": "Available"
+    },
+    {
+      "id": "6",
+      "value": "PENDING",
+      "label": "Pending"
+    },
+    {
+      "id": "7",
+      "value": "IN_TRANSIT",
+      "label": "In Transit"
+    },
+    {
+      "id": "8",
+      "value": "DAMAGED",
+      "label": "Damaged"
+    }
+  ],
+  "fuelTypes": [
+    {
+      "id": "1",
+      "value": "PETROL",
+      "label": "Petrol"
+    },
+    {
+      "id": "2",
+      "value": "DIESEL",
+      "label": "Diesel"
+    },
+    {
+      "id": "3",
+      "value": "ELECTRIC",
+      "label": "Electric"
+    },
+    {
+      "id": "4",
+      "value": "HYBRID",
+      "label": "Hybrid"
+    },
+    {
+      "id": "5",
+      "value": "PLUG_IN_HYBRID",
+      "label": "Plug-in Hybrid"
+    },
+    {
+      "id": "6",
+      "value": "CNG",
+      "label": "CNG"
+    },
+    {
+      "id": "7",
+      "value": "LPG",
+      "label": "LPG"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "VH-2026-0141",
+      "brand": {
+        "id": 1,
+        "value": "TOYOTA",
+        "label": "Toyota"
+      },
+      "model": {
+        "id": 1,
+        "value": "CAMRY_XLE",
+        "label": "Camry XLE"
+      },
+      "name": "Toyota Camry XLE",
+      "category": {
+        "id": 1,
+        "value": "SEDAN",
+        "label": "Sedan"
+      },
+      "status": "Sold",
+      "pic": "https://media.wired.com/photos/63b8d0a771c6b526845f15a6/3:2/w_2400,h_1600,c_limit/CES-2023-PEUGEOT_INCEPTION_CONCEPT_2301CN202.jpg",
+      "year": 2023,
+      "transmission": "Auto",
+      "fuel": "Petrol",
+      "mileage": 1231,
+      "purchasePrice": 24800,
+      "sellingPrice": 3100
+    },
+    {
+      "id": "VH-2026-0142",
+      "brand": {
+        "id": 2,
+        "value": "HONDA",
+        "label": "Honda"
+      },
+      "model": {
+        "id": 6,
+        "value": "CR_V",
+        "label": "CR-V"
+      },
+      "name": "Honda CR-V",
+      "category": {
+        "id": 2,
+        "value": "SUV",
+        "label": "SUV"
+      },
+      "status": "Available",
+      "pic": "https://static.foxbusiness.com/foxbusiness.com/content/uploads/2024/10/ferrari9.jpg",
+      "year": 2024,
+      "transmission": "Auto",
+      "fuel": "Petrol",
+      "mileage": 4545,
+      "purchasePrice": 29500,
+      "sellingPrice": 4200
+    },
+    {
+      "id": "VH-2026-0143",
+      "brand": {
+        "id": 9,
+        "value": "FORD",
+        "label": "Ford"
+      },
+      "model": {
+        "id": 43,
+        "value": "RANGER",
+        "label": "Ranger"
+      },
+      "name": "Ford Ranger",
+      "category": {
+        "id": 3,
+        "value": "PICKUP_TRUCK",
+        "label": "Pickup Truck"
+      },
+      "status": "Reserved",
+      "pic": "https://images.unsplash.com/photo-1551830820-330a71b99659",
+      "year": 2022,
+      "transmission": "Auto",
+      "fuel": "Diesel",
+      "mileage": 1231,
+      "purchasePrice": 24800,
+      "sellingPrice": 3100
+    },
+    {
+      "id": "VH-2026-0144",
+      "brand": {
+        "id": 7,
+        "value": "BMW",
+        "label": "BMW"
+      },
+      "model": {
+        "id": 8,
+        "value": "X5",
+        "label": "X5"
+      },
+      "name": "BMW X5",
+      "category": {
+        "id": 2,
+        "value": "SUV",
+        "label": "SUV"
+      },
+      "status": "Available",
+      "pic": "https://images.unsplash.com/photo-1555215695-3004980ad54e",
+      "year": 2023,
+      "transmission": "Auto",
+      "fuel": "Hybrid",
+      "mileage": 18600,
+      "purchasePrice": 68500,
+      "sellingPrice": 7200
+    },
+    {
+      "id": "VH-2026-0145",
+      "brand": {
+        "id": 15,
+        "value": "TESLA",
+        "label": "Tesla"
+      },
+      "model": {
+        "id": 12,
+        "value": "MODEL_3",
+        "label": "Model 3"
+      },
+      "name": "Tesla Model 3",
+      "category": {
+        "id": 1,
+        "value": "SEDAN",
+        "label": "Sedan"
+      },
+      "status": "Sold",
+      "pic": "https://images.unsplash.com/photo-1560958089-b8a1929cea89",
+      "year": 2024,
+      "transmission": "Auto",
+      "fuel": "Electric",
+      "mileage": 6300,
+      "purchasePrice": 41900,
+      "sellingPrice": 6300
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
