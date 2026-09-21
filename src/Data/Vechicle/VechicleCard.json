@@ -71,30 +71,9 @@
       "status": "ACTIVE"
     },
     {
-      "id": "11",
-      "brandName": "Volkswagen",
-      "description": "German automotive manufacturer",
-      "country": "Germany",
-      "status": "ACTIVE"
-    },
-    {
-      "id": "12",
-      "brandName": "Audi",
-      "description": "German luxury automotive manufacturer",
-      "country": "Germany",
-      "status": "ACTIVE"
-    },
-    {
       "id": "13",
       "brandName": "Lexus",
       "description": "Japanese luxury automotive brand",
-      "country": "Japan",
-      "status": "ACTIVE"
-    },
-    {
-      "id": "14",
-      "brandName": "Subaru",
-      "description": "Japanese automotive manufacturer",
       "country": "Japan",
       "status": "ACTIVE"
     },

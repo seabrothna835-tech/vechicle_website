@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import AccountPanel from '../components/AccountPanel'
 import { FaArrowRight, FaBolt, FaHeadset, FaShieldAlt, FaSlidersH, FaStar } from 'react-icons/fa'
-import { IoMdSearch } from "react-icons/io";
 import { getData } from '../Data/api'
 import VehicleCard from "../components/VehicleCard"
 // const vehicles = [
@@ -247,7 +246,7 @@ function Home() {
                     <div>
                         <div className="mb-6 flex items-end justify-between">
                             <div><p className="mb-2 font-['DM_Mono'] text-[10px] uppercase tracking-[.16em] text-[#1976ed]">Our collection</p><h2 className={`text-2xl font-extrabold ${isDark ? 'text-white' : 'text-[#1b355a]'}`}>Popular Vehicles</h2><span className="mt-3 block h-1 w-8 bg-[#1976ed]" /></div>
-                            <a className="text-xs font-bold text-[#1976ed] transition hover:text-[#0f63ce]" href="/#vehicles-page">View All <span className="text-base">→</span></a>
+                                <a className="text-xs font-bold text-[#1976ed] transition hover:text-[#0f63ce]" href="/vehicles">View All <span className="text-base">→</span></a>
                         </div>
                         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                             {visibleVehicles.map((vehicle) => (
@@ -267,16 +266,7 @@ function Home() {
                     </div>
                     <div className='z-10'><AccountPanel /></div>
                 </section>
-                <section className={`${isDark ? 'bg-darkBG' : 'bg-lightBG'} border-y px-6 py-12 sm:px-10 lg:px-20`}>
-                    <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 md:grid-cols-4">
-                        {[['10K+', 'Vehicles delivered'], ['98%', 'Happy customers'], ['15+', 'Years of trust'], ['24/7', 'Support available']].map(([value, label]) => <div className="text-center" key={label}><strong className={`block text-3xl font-extrabold ${isDark ? 'text-darktext' : 'text-lighttext'}`}>{value}</strong><span className="mt-2 block text-xs font-medium text-slate-400">{label}</span></div>)}
-                    </div>
-                </section>
-                <section id="about" className={`scroll-mt-16 mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:grid lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-24`}>
-                    <div><p className="mb-3 font-['DM_Mono'] text-[10px] uppercase tracking-[.16em] text-[#1976ed]">Why choose Vehicle</p><h2 className={`max-w-lg text-3xl font-extrabold leading-tight sm:text-5xl ${isDark ? 'text-white' : 'text-[#17345c]'}`}>A better way to find your <span className="text-[#1976ed]">next car.</span></h2><p className="mt-6 max-w-lg text-sm leading-7 text-slate-500">We make car buying simple, transparent, and genuinely enjoyable. Every vehicle is inspected, every price is clear, and our team is here whenever you need us.</p><a className="mt-8 inline-flex items-center gap-3 rounded-md bg-[#1976ed] px-5 py-3 text-xs font-bold text-white transition hover:bg-[#0f63ce]" href="/#vehicles-page">Explore our vehicles <FaArrowRight /></a></div>
-                    <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:mt-0">{[[FaShieldAlt, 'Trusted quality', 'Every vehicle passes our 150-point inspection.'], [FaStar, 'Best value', 'Clear pricing with no hidden surprises.'], [FaHeadset, 'Here to help', 'Friendly experts available whenever you need us.'], [FaBolt, 'Quick & easy', 'From browsing to keys in hand, made simple.']].map(([Icon, title, text]) => <div className={`${isDark ? 'bg-[#172f58]' : 'bg-white'} rounded-lg border border-slate-200 p-5 shadow-sm`} key={title}><Icon className="text-xl text-[#1976ed]" /><h3 className={`mt-4 text-sm font-bold ${isDark ? 'text-white' : 'text-[#17345c]'}`}>{title}</h3><p className="mt-2 text-xs leading-5 text-slate-500">{text}</p></div>)}</div>
-                </section>
-                <section className="bg-[#0d2c58] px-6 py-16 text-white sm:px-10 lg:px-20 lg:py-20"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 md:flex-row md:items-center"><div><p className="mb-3 font-['DM_Mono'] text-[10px] uppercase tracking-[.16em] text-[#69b1ff]">Ready when you are</p><h2 className="max-w-xl text-3xl font-extrabold leading-tight sm:text-5xl">Your next adventure<br /><span className="text-[#3d9bff]">starts here.</span></h2></div><a className="inline-flex items-center gap-3 rounded-md bg-[#1976ed] px-6 py-4 text-xs font-bold text-white transition hover:bg-[#0f63ce]" href="/#vehicles-page">Find my vehicle <FaArrowRight /></a></div></section>
+                {/* <section className="bg-[#0d2c58] px-6 py-16 text-white sm:px-10 lg:px-20 lg:py-20"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 md:flex-row md:items-center"><div><p className="mb-3 font-['DM_Mono'] text-[10px] uppercase tracking-[.16em] text-[#69b1ff]">Ready when you are</p><h2 className="max-w-xl text-3xl font-extrabold leading-tight sm:text-5xl">Your next adventure<br /><span className="text-[#3d9bff]">starts here.</span></h2></div><a className="inline-flex items-center gap-3 rounded-md bg-[#1976ed] px-6 py-4 text-xs font-bold text-white transition hover:bg-[#0f63ce]" href="/#vehicles-page">Find my vehicle <FaArrowRight /></a></div></section> */}
             </main>
         </div>
     )

@@ -1,57 +1,136 @@
-function Footer() {
+import {
+	FaCar,
+	FaEnvelope,
+	FaPhone,
+	FaLocationDot,
+	FaFacebookF,
+	FaInstagram,
+	FaYoutube,
+} from "react-icons/fa6";
+import { FaTelegramPlane } from "react-icons/fa";
+
+
+/**
+ * Footer — works with the same class-based dark mode as AboutPage.
+ * Put <Footer /> at the bottom of your layout. Replace the links, contact
+ * details and social URLs with your own.
+ */
+const columns = [
+	{
+		title: "Explore",
+		links: [
+			{ label: "Home", href: "/#home-content" },
+			{ label: "Popular", href: "/#popular-page" },
+			{ label: "About", href: "/#about-page" },
+			{ label: "Contact", href: "/#contact-page" },
+		],
+	},
+	{
+		title: "Company",
+		links: [
+			{ label: "About Us", href: "/#about-page" },
+			{ label: "Contact", href: "/#contact-page" },
+			{ label: "Help Center", href: "#" },
+			{ label: "FAQ", href: "/faq" },
+		],
+	},
+];
+
+const socials = [
+	{ icon: FaFacebookF, label: "Facebook", href: "#" },
+	{ icon: FaInstagram, label: "Instagram", href: "#" },
+	{ icon: FaTelegramPlane, label: "Telegram", href: "https://t.me/+855965668263" },
+	{ icon: FaYoutube, label: "YouTube", href: "#" },
+];
+
+const linkClass =
+	"text-sm text-slate-600 transition-colors hover:text-blue-600 focus:outline-none focus-visible:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 dark:focus-visible:text-blue-400";
+
+export default function Footer() {
 	return (
-		<footer className="overflow-hidden bg-[#162033] px-6 pb-6 pt-16 text-[#f4f5f3] sm:px-10 lg:px-20 lg:pt-20">
-			<div className="mx-auto max-w-7xl">
-				<div className="flex flex-col justify-between gap-14 border-b border-white/15 pb-14 md:flex-row md:gap-20 lg:pb-20">
-					<div>
-						<a className="group inline-flex items-center gap-2.5 font-['Manrope'] text-sm font-extrabold tracking-[0.18em]" href="/" aria-label="Kinetic home">
-							<span className="inline-flex h-7 w-7 rotate-[-7deg] items-center justify-center bg-[#e95731] text-[13px] tracking-normal text-white transition-transform duration-300 group-hover:rotate-0">K</span>
-							<span>KINETIC<span className="text-[#e95731]">.</span></span>
+		<footer className="border-t border-slate-200 bg-slate-50 text-slate-600 transition-colors dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+			<div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
+				{/* Brand */}
+				<div>
+					<a href="/" className="inline-flex items-center gap-2">
+						<span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
+							<FaCar size={18} />
+						</span>
+						<span className="text-xl font-bold text-slate-900 dark:text-white">Vechicle</span>
 					</a>
-						<p className="mt-6 font-['Manrope'] text-xs leading-7 text-[#a6b0b6]">Designed for the road ahead.<br />Built around how you move.</p>
-					</div>
-					<div className="w-full md:max-w-md">
-						<p className="mb-5 font-['DM_Mono'] text-[10px] uppercase tracking-[0.14em] text-[#ff805d]">Keep moving</p>
-						<h2 className="mb-8 font-['Playfair_Display'] text-4xl leading-[0.98] tracking-[-0.04em] sm:text-5xl">Good things are<br /><em className="text-[#ff805d]">going places.</em></h2>
-						<form className="flex border-b border-white/45" onSubmit={(event) => event.preventDefault()}>
-							<label className="sr-only" htmlFor="footer-email">Email address</label>
-							<input className="min-w-0 flex-1 bg-transparent py-3 font-['Manrope'] text-xs text-[#f4f5f3] outline-none placeholder:text-[#a6b0b6]" id="footer-email" type="email" placeholder="Your email address" required />
-							<button className="my-1 h-10 w-10 shrink-0 bg-[#e95731] text-lg text-white transition-colors hover:bg-[#ff805d]" type="submit" aria-label="Subscribe to the Kinetic newsletter">↗</button>
-					</form>
-				</div>
-			</div>
-
-				<div className="grid grid-cols-2 gap-x-6 gap-y-12 py-12 md:grid-cols-3 lg:py-16">
-					<div className="flex flex-col items-start gap-3">
-						<p className="mb-2 font-['DM_Mono'] text-[10px] uppercase tracking-[0.14em] text-[#ff805d]">Explore</p>
-						<a className="font-['Manrope'] text-xs text-[#f4f5f3] transition-colors hover:text-[#ff805d]" href="/vehicles">Vehicles</a>
-						<a className="font-['Manrope'] text-xs text-[#f4f5f3] transition-colors hover:text-[#ff805d]" href="/about">About us</a>
-						<a className="font-['Manrope'] text-xs text-[#f4f5f3] transition-colors hover:text-[#ff805d]" href="/contact">Contact</a>
-				</div>
-					<div className="flex flex-col items-start gap-3">
-						<p className="mb-2 font-['DM_Mono'] text-[10px] uppercase tracking-[0.14em] text-[#ff805d]">Connect</p>
-						<a className="font-['Manrope'] text-xs text-[#f4f5f3] transition-colors hover:text-[#ff805d]" href="mailto:hello@kinetic.example">hello@kinetic.example</a>
-						<a className="font-['Manrope'] text-xs text-[#f4f5f3] transition-colors hover:text-[#ff805d]" href="tel:+18005550184">+1 800 555 0184</a>
-						<span className="font-['Manrope'] text-xs text-[#a6b0b6]">Mon-Fri, 9am-6pm</span>
-				</div>
-					<div className="col-span-2 flex flex-col items-start gap-3 md:col-span-1">
-						<p className="mb-2 font-['DM_Mono'] text-[10px] uppercase tracking-[0.14em] text-[#ff805d]">Follow along</p>
-						<div className="flex gap-2">
-							<a className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 font-['DM_Mono'] text-[11px] uppercase transition-colors hover:border-[#ff805d] hover:text-[#ff805d]" href="#instagram" aria-label="Instagram">ig</a>
-							<a className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 font-['DM_Mono'] text-[11px] uppercase transition-colors hover:border-[#ff805d] hover:text-[#ff805d]" href="#youtube" aria-label="YouTube">yt</a>
-							<a className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 font-['DM_Mono'] text-[11px] uppercase transition-colors hover:border-[#ff805d] hover:text-[#ff805d]" href="#linkedin" aria-label="LinkedIn">in</a>
-						</div>
+					<p className="mt-4 max-w-xs text-sm leading-relaxed">
+						A modern vehicle platform that makes buying, selling, and discovering vehicles simple
+						and convenient.
+					</p>
+					<div className="mt-5 flex gap-2">
+						{socials.map(({ icon: Icon, label, href }) => (
+							<a
+								key={label}
+								href={href}
+								aria-label={label}
+								target="_blank"
+								className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700 transition hover:bg-blue-600 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:bg-blue-500/15 dark:text-blue-400 dark:hover:bg-blue-500 dark:hover:text-white"
+							>
+								<Icon size={16} />
+							</a>
+						))}
 					</div>
 				</div>
 
-				<div className="flex flex-col items-start gap-4 border-t border-white/15 pt-5 font-['DM_Mono'] text-[10px] text-[#a6b0b6] sm:flex-row sm:items-center sm:justify-between">
-					<span>© 2025 Kinetic Motors</span>
-					<div className="flex gap-6"><a className="transition-colors hover:text-[#ff805d]" href="#privacy">Privacy</a><a className="transition-colors hover:text-[#ff805d]" href="#terms">Terms</a></div>
-					<span>Made to keep moving <b className="text-base text-[#ff805d]">↗</b></span>
+				{/* Link columns */}
+				{columns.map((col) => (
+					<nav key={col.title} aria-label={col.title}>
+						<h3 className="text-sm font-semibold text-slate-900 dark:text-white">{col.title}</h3>
+						<ul className="mt-4 space-y-3">
+							{col.links.map((l) => (
+								<li key={l.label}>
+									<a href={l.href} className={linkClass} target="_blank" rel="noopener noreferrer">
+										{l.label}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				))}
+
+				{/* Contact */}
+				<div>
+					<h3 className="text-sm font-semibold text-slate-900 dark:text-white">Contact Us</h3>
+					<ul className="mt-4 space-y-3 text-sm">
+						<li className="flex items-start gap-3">
+							<FaLocationDot size={16} className="mt-0.5 shrink-0 text-blue-600 dark:text-blue-400" />
+							<span>Phnom penh, Cambodia</span>
+						</li>
+						<li className="flex items-center gap-3">
+							<FaPhone size={16} className="shrink-0 text-blue-600 dark:text-blue-400" />
+							<a href="tel:+000000000" className={linkClass}>
+								+93 444 534
+							</a>
+						</li>
+						<li className="flex items-center gap-3">
+							<FaEnvelope size={16} className="shrink-0 text-blue-600 dark:text-blue-400" />
+							<a href="mailto:seabrothna0@gmail.com" className={linkClass}>
+								vechicle168@gmail.com
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
+
+			{/* Bottom bar */}
+			<div className="border-t border-slate-200 dark:border-slate-800">
+				<div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs sm:flex-row">
+					<p>© {new Date().getFullYear()} Vechicle. All rights reserved.</p>
+					<div className="flex gap-5">
+						<a href="/privacy" className={linkClass}>
+							Privacy Policy
+						</a>
+						<a href="/terms" className={linkClass}>
+							Terms of Service
+						</a>
+					</div>
+				</div>
 			</div>
 		</footer>
-	)
+	);
 }
-
-export default Footer

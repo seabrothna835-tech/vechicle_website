@@ -1,20 +1,26 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { addItem } from "../Store/CartSlice";
+import { toggleFavorite, viewItem } from "../Store/CartSlice";
 import {
     Heart,
     CarFront,
     Box,
     BadgeCheck,
-    ShieldCheck,
-    Pencil,
-    Eye,
-    Trash2,
+    ShieldCheck
 } from "lucide-react";
-export function VehicleCard({ v, vehicle}) {
-	const isDark = useSelector((state)=>state.dark.isDark)
+import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
+
+export function VehicleCard({ v, vehicle }) {
+    const dispatch = useDispatch()
+    const isDark = useSelector((state) => state.dark.isDark)
+    const wishlist = useSelector((state) => state.cart.wishlist)
     const item = v ?? vehicle ?? {}
+    const itemId = item.id ?? item.name
+    const favorite = wishlist.some((savedItem) => (savedItem.id ?? savedItem.name) === itemId)
     return (
         <div
-            className={`group flex flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${isDark
+            className={` group flex flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${isDark
                 ? "border-[#27344B] bg-[#0B1A38] text-white"
                 : "border-[#DDE3EC] bg-white text-[#172033]"
                 }`}
@@ -60,13 +66,14 @@ export function VehicleCard({ v, vehicle}) {
 
                     {/* ================= FAVORITE ================= */}
                     <button
+                        onClick={() => dispatch(toggleFavorite(item))}
                         type="button"
                         className={`absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full border shadow-lg backdrop-blur-md transition-all ${isDark
                             ? "border-white/10 bg-[#182A48]/90 text-white hover:bg-[#22385D]"
                             : "border-black/10 bg-white/90 text-[#667085] hover:bg-white"
                             }`}
                     >
-                        <Heart size={16} strokeWidth={2} />
+                        {favorite? <IoIosHeart size={16} strokeWidth={2} />:<IoIosHeartEmpty size={16} strokeWidth={2} />}
                     </button>
                 </div>
             </div>
@@ -224,31 +231,30 @@ export function VehicleCard({ v, vehicle}) {
                 </div>
 
                 {/* ================= ACTION BUTTONS ================= */}
-                <div className="mt-4 flex items-center justify-center gap-4">
-                    {/* Edit */}
+                <div className="mt-4 flex items-center justify-center gap-2 text-xs">
+                    {/* add */}
                     <button
                         type="button"
-                        onClick={() => onEdit?.(item)}
+                        onClick={() => dispatch(addItem(item))}
                         className={`p-2 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 ${isDark
                             ? "border-[#123C91] bg-[#0D2A68] text-[#6EA0FF] hover:bg-[#12367C]"
                             : "border-[#C8D8FF] bg-[#EEF4FF] text-[#356DDE] hover:bg-[#E2ECFF]"
                             }`}
                     >
-						Add to cart
-                        {/* <Pencil size={16} strokeWidth={2} /> */}
+                        Add to cart
                     </button>
 
                     {/* View */}
-                    {/* <button
+                    <button
                         type="button"
-                        onClick={() => onView?.(item)}
+                        onClick={() => dispatch(viewItem(item))}
                         className={`p-2 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 ${isDark
                             ? "border-[#263A92] bg-[#17245C] text-[#A18BFF] hover:bg-[#202F70]"
                             : "border-[#D7D0FF] bg-[#F1EEFF] text-[#745CDE] hover:bg-[#E9E5FF]"
                             }`}
                     >
-                        <Eye size={16} strokeWidth={2} />
-                    </button> */}
+                        View details
+                    </button>
 
                     {/* Delete */}
                     {/* <button

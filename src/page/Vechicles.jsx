@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState ,useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { FaArrowRight, FaCarSide, FaSearch } from 'react-icons/fa'
 import { getData } from '../Data/api'
-import {VehicleCard} from '../components/VehicleCard'
+import { VehicleCard } from '../components/VehicleCard'
+import Alert from '../components/alert/Alert'
 
 function Vechicles() {
 	const isDark = useSelector((state) => state.dark.isDark)
@@ -41,7 +42,29 @@ function Vechicles() {
 	useEffect(() => {
 		getAllVechicle()
 	}, [])
+	const cartCount = useSelector((state) => state.cart.count)
+	const previousCartCount = useRef(cartCount)
+	const [alert, setAlert] = useState({
+		show: false,
+		message: "Add to cart success !",
+		type: "success"
+	});
 
+	useEffect(() => {
+		const cartWasIncreased = cartCount > previousCartCount.current
+		previousCartCount.current = cartCount
+
+		if (!cartWasIncreased) {
+			return
+		}
+
+		setAlert((currentAlert) => ({ ...currentAlert, show: true }))
+		const timeoutId = window.setTimeout(() => {
+			setAlert((currentAlert) => ({ ...currentAlert, show: false }))
+		}, 2000)
+
+		return () => window.clearTimeout(timeoutId)
+	}, [cartCount])
 	return (
 		<div id="vehicles" className={isDark ? 'min-h-screen bg-darkBG' : 'min-h-screen bg-[#f5f9fe]'}>
 			<main>
@@ -62,6 +85,7 @@ function Vechicles() {
 				</section>
 				<section className="mx-6 mb-12 overflow-hidden rounded-xl bg-[#176bd4] px-6 py-10 text-white sm:mx-10 sm:px-10 lg:mx-auto lg:max-w-7xl lg:px-16"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-center"><div><p className="text-xs font-bold uppercase tracking-[.14em] text-blue-100">Need a hand?</p><h2 className="mt-2 text-2xl font-extrabold">Talk to a vehicle expert.</h2><p className="mt-2 text-sm text-blue-100">We can help you find the right fit for your life and budget.</p></div><a className="inline-flex items-center gap-3 self-start rounded-md bg-white px-5 py-3 text-xs font-bold text-[#176bd4] transition hover:bg-blue-50" href="mailto:hello@vehicle.example">Contact our team <FaArrowRight /></a></div></section>
 			</main>
+			{alert.show && <Alert message={alert.message} type={alert.type} />}
 		</div>
 	)
 }

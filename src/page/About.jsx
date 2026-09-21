@@ -1,132 +1,128 @@
-import { FaCheckCircle, FaShieldAlt, FaUsers, FaWrench } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from "react";
+import {
+	Target,
+	Binoculars,
+	Car,
+	Search,
+	ShieldCheck,
+	Coins,
+	Heart,
+	Smartphone
+} from "lucide-react";
+import { useSelector } from "react-redux";
 
-const stats = [
-	[FaUsers, '10K+', 'Happy drivers'],
-	[FaShieldAlt, '150+', 'Inspection points'],
-	[FaWrench, '15+', 'Years experience'],
-	[FaCheckCircle, '98%', 'Recommend us'],
-]
+const benefits = [
+	{ icon: Car, title: "Wide Vehicle Selection", text: "Browse different brands, models, and categories." },
+	{ icon: Search, title: "Easy Search", text: "Quickly find vehicles using advanced filters." },
+	{ icon: ShieldCheck, title: "Trusted & Secure", text: "Protect your data and vehicle information." },
+	{ icon: Coins, title: "Competitive Prices", text: "Find vehicles at reasonable prices." },
+	{ icon: Heart, title: "Save Favorites", text: "Registered users can save vehicles they like." },
+	{ icon: Smartphone, title: "Easy to Use", text: "Simple and responsive interface on all devices." },
+];
 
-const principles = [
-	['Transparent', 'Clear from the start', 'Simple pricing, honest descriptions, and no surprises after you decide.'],
-	['Trusted', 'Quality you can rely on', 'Every vehicle receives a detailed inspection before it reaches our collection.'],
-	['Personal', 'People behind every sale', 'Our specialists listen first, then help you find the right fit.'],
-]
-
-function About() {
-	const isDark = useSelector((state) => state.dark.isDark)
-	const heading = isDark ? 'text-white' : 'text-[#132a4d]'
-	const body = isDark ? 'text-blue-100/70' : 'text-slate-500'
-	const panel = isDark ? 'bg-[#132846] border-white/10' : 'bg-white border-slate-200'
-
+function Eyebrow({ children, className = "" }) {
 	return (
-		<div id="about" className={isDark ? 'min-h-screen bg-darkBG' : 'min-h-screen bg-[#eef4fc]'}>
-			<style>{`
-				@keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-				.rise-in { animation: riseIn .8s cubic-bezier(.2,.7,.3,1) both; }
-				@media (prefers-reduced-motion: reduce) {
-					.rise-in { animation: none; }
-				}
-			`}</style>
-			<main>
-				{/* Hero */}
-				<section className="relative overflow-hidden bg-[#0b1f3a] px-6 py-20 text-white sm:px-10 lg:px-20 lg:py-28">
-					<div
-						className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#e8a33d]/70 to-transparent"
-						aria-hidden="true"
-					/>
-					<div className="mx-auto max-w-7xl">
-						<p className="rise-in mb-5 font-['Fraunces'] text-sm italic text-[#69b1ff]">About Vehicle</p>
-						<h1 className="rise-in max-w-3xl font-['Fraunces'] text-4xl font-semibold leading-[1.1] sm:text-6xl" style={{ animationDelay: '.08s' }}>
-							Buying a car should feel exciting, not stressful.
-						</h1>
-						<p
-							className="rise-in mt-6 max-w-xl text-sm leading-7 text-blue-100/75"
-							style={{ animationDelay: '.16s' }}
-						>
-							We bring together trusted vehicles, transparent information, and real human support to make your
-							next move feel effortless.
-						</p>
-
-						{/* Instrument strip */}
-						<div
-							className="rise-in mt-14 grid grid-cols-2 divide-y divide-white/10 border-t border-white/10 sm:grid-cols-4 sm:divide-x sm:divide-y-0 sm:border-x-0"
-							style={{ animationDelay: '.24s' }}
-						>
-							{stats.map(([Icon, value, label]) => (
-								<div key={label} className="flex flex-col gap-2 py-6 pr-6 first:pl-0 sm:px-6">
-									<Icon className="text-base text-[#e8a33d]" />
-									<strong className="font-['Fraunces'] text-3xl font-semibold text-white">{value}</strong>
-									<span className="text-xs text-blue-100/60">{label}</span>
-								</div>
-							))}
-						</div>
-					</div>
-				</section>
-
-				{/* Story */}
-				<section className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-20">
-					<div className="flex gap-0 lg:gap-16">
-						<div className="hidden shrink-0 flex-col items-center lg:flex">
-							<span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#e8a33d]" />
-							<span className="mt-2 w-px flex-1 bg-slate-300/60" />
-						</div>
-						<div className="grid flex-1 gap-12 py-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-24 lg:py-24">
-							<div>
-								<p className="mb-3 font-['Fraunces'] text-sm italic text-[#1976ed]">Our story</p>
-								<h2 className={`font-['Fraunces'] text-3xl font-semibold leading-tight sm:text-5xl ${heading}`}>
-									A smarter way to move forward.
-								</h2>
-								<p className={`mt-6 text-sm leading-7 ${body}`}>
-									Vehicle started with a simple belief: finding a great car should be as enjoyable as driving
-									one. Today, we help thousands of people find vehicles that fit their lives, their plans, and
-									their budgets.
-								</p>
-								<p className={`mt-4 text-sm leading-7 ${body}`}>
-									From the first search to the moment you take the keys, our team makes every step clear and
-									personal.
-								</p>
-							</div>
-							<div className={`flex flex-col justify-center border-t-2 border-[#e8a33d] ${panel} border p-8`}>
-								<p className={`font-['Fraunces'] text-xl italic leading-snug ${heading}`}>
-									&ldquo;We&apos;d rather lose a sale than let someone drive off unsure.&rdquo;
-								</p>
-								<p className={`mt-4 text-xs uppercase tracking-normal ${isDark ? 'text-blue-100/50' : 'text-slate-400'}`}>
-									The promise every specialist works by
-								</p>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				{/* Principles */}
-				<section className={isDark ? 'bg-[#10274b]' : 'bg-white'}>
-					<div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-20">
-						<div className="flex gap-0 lg:gap-16">
-							<div className="hidden shrink-0 flex-col items-center lg:flex">
-								<span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#e8a33d]" />
-							</div>
-							<div className="flex-1 py-16 lg:py-20">
-								<p className="mb-3 font-['Fraunces'] text-sm italic text-[#1976ed]">What guides us</p>
-								<h2 className={`font-['Fraunces'] text-3xl font-semibold ${heading}`}>The Vehicle standard.</h2>
-
-								<div className="relative mt-12 grid gap-10 border-t border-dashed border-slate-300/70 pt-10 md:grid-cols-3 md:gap-8">
-									{principles.map(([word, title, text]) => (
-										<article key={word}>
-											<span className="font-['Fraunces'] text-lg italic text-[#e8a33d]">{word}</span>
-											<h3 className={`mt-3 text-lg font-bold ${heading}`}>{title}</h3>
-											<p className={`mt-3 text-sm leading-6 ${body}`}>{text}</p>
-										</article>
-									))}
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-			</main>
-		</div>
-	)
+		<p
+			className={`text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400 ${className}`}
+		>
+			{children}
+		</p>
+	);
 }
 
-export default About
+export default function AboutPage() {
+	const isDark = useSelector((state)=>state.dark.isDark)
+	return (
+		<div className={`min-h-screen ${isDark? "bg-darkBG text-darktext":"bg-[#F3F7FB] text-lighttext"}`}>
+			{/* About */}
+			<section className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-14 md:grid-cols-2 md:py-16 scroll-pop">
+				<div>
+					<Eyebrow>Who we are</Eyebrow>
+					<h1 className={`mt-2 text-4xl font-bold tracking-tight ${isDark? "text-darktext":"text-lighttext"} md:text-5xl`}>
+						About Vechicle
+					</h1>
+					<p className="mt-5 max-w-md leading-relaxed">
+						Vechicle is a modern vehicle platform designed to make buying, selling, and discovering
+						vehicles simple and convenient. We provide users with an easy way to explore vehicles by
+						category, brand, model, fuel type, price, and availability.
+					</p>
+					<p className="mt-4 max-w-md leading-relaxed">
+						Our goal is to connect people with the right vehicles and create a better, smoother
+						experience in the automotive world.
+					</p>
+				</div>
+
+				<div className=" overflow-hidden rounded-2xl hover:-translate-y-1 shadow-lg">
+					<img
+						src="https://cdn.directify.app/directories/cover_images/01M1QAZC0J1K7FQKFV1V4EFJVV.png"
+						alt="Vechicle showroom with cars parked outside"
+						className="h-full w-full object-cover"
+					/>
+				</div>
+			</section>
+
+			{/* Mission & Vision */}
+			<section className={`m-auto`}>
+				<div className="scroll-pop mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-2 md:gap-5">
+					<div className={`flex gap-3 md:pr-12 p-4 shadow-md transition hover:-translate-y-1 rounded-2xl ${isDark? "bg-[#0D2C58] text-darktext":"bg-lightBG text-lighttext"}`}>
+						<div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full ${isDark? "bg-blue-500":"bg-blue-400"} text-white`}>
+							<Target size={28} />
+						</div>
+						<div>
+							<Eyebrow>Our mission</Eyebrow>
+							<h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+								Make Vehicle Discovery Easier
+							</h2>
+							<p className="mt-2 text-sm leading-relaxed">
+								To make vehicle discovery easier, faster, and more transparent by providing reliable
+								vehicle information and a simple digital experience for every customer.
+							</p>
+						</div>
+					</div>
+
+					<div className={`flex gap-3 p-4 shadow-md transition hover:-translate-y-1 rounded-2xl ${isDark? "bg-[#0D2C58] text-darktext":"bg-lightBG text-lighttext"}`}>
+						<div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full ${isDark? "bg-blue-500":"bg-blue-400"} text-white`}>
+							<Binoculars size={28} />
+						</div>
+						<div>
+							<Eyebrow>Our vision</Eyebrow>
+							<h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+								A Trusted Vehicle Platform
+							</h2>
+							<p className="mt-2 text-sm leading-relaxed">
+								To become a trusted digital vehicle platform where people can confidently find the
+								right vehicle for their needs.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Benefits */}
+			<section className="mx-auto max-w-6xl px-6 py-14 scroll-pop">
+				<div className="text-center">
+					<Eyebrow>Why choose us</Eyebrow>
+					<h2 className="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
+						The Benefits of Choosing Vechicle
+					</h2>
+					<p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed">
+						We are committed to giving you the best experience with reliable vehicles, transparent
+						information, and excellent support.
+					</p>
+				</div>
+
+				<div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+					{benefits.map(({ icon: Icon, title, text }) => (
+						<div key={title} className="flex flex-col items-center text-center">
+							<div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-400">
+								<Icon size={24} />
+							</div>
+							<h3 className="mt-4 text-sm font-semibold text-slate-900 dark:text-white">{title}</h3>
+							<p className="mt-1 text-xs leading-relaxed">{text}</p>
+						</div>
+					))}
+				</div>
+			</section>
+		</div>
+	);
+}
