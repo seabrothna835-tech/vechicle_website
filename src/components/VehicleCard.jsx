@@ -20,7 +20,7 @@ export function VehicleCard({ v, vehicle }) {
     const favorite = wishlist.some((savedItem) => (savedItem.id ?? savedItem.name) === itemId)
     return (
         <div
-            className={` group flex flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${isDark
+            className={`scroll-pop group flex flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${isDark
                 ? "border-[#27344B] bg-[#0B1A38] text-white"
                 : "border-[#DDE3EC] bg-white text-[#172033]"
                 }`}

@@ -8,13 +8,8 @@ import {
 	FaYoutube,
 } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
-
-/**
- * Footer — works with the same class-based dark mode as AboutPage.
- * Put <Footer /> at the bottom of your layout. Replace the links, contact
- * details and social URLs with your own.
- */
 const columns = [
 	{
 		title: "Explore",
@@ -47,8 +42,9 @@ const linkClass =
 	"text-sm text-slate-600 transition-colors hover:text-blue-600 focus:outline-none focus-visible:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 dark:focus-visible:text-blue-400";
 
 export default function Footer() {
+	const isDark = useSelector((state)=>state.dark.isDark)
 	return (
-		<footer className="border-t border-slate-200 bg-slate-50 text-slate-600 transition-colors dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+		<footer className={`border-t border-slate-200 ${isDark? "bg-[#10274B] text-darktext":"bg-[#FFFFFF] text-lighttext"}`}>
 			<div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
 				{/* Brand */}
 				<div>

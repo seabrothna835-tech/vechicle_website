@@ -104,8 +104,9 @@ export default function GetFee({
     const urgent = left <= 20;
 
     const money = (n) => `$${Number(n).toLocaleString("en-US", { minimumFractionDigits: 2 })}`;
+    const bookingFee = booking.totalPrice * 0.3;
     const telegramMessage = [
-        "====== ការកក់ថ្មី ======",
+        "============ ការកក់ថ្មី ============",
         "",
         `🆔 លេខកូដ: ${booking.id}`,
         `🚘 ឈ្មោះរថយន្ត: ${booking.name}`,
@@ -119,25 +120,40 @@ export default function GetFee({
         `📊 ស្ថានភាព: ${booking.status}`,
         "",
         `🔢 ចំនួនកក់: ${booking.quantity}`,
-        `💵 តម្លៃលក់: ${money(booking.sellingPrice)}`,
+        `💵 តម្លៃកក់: ${money(bookingFee)}`,
         `💰 តម្លៃសរុប: ${money(booking.totalPrice)}`,
-        "====================================",
+        "==================================",
     ].join("\n");
     const handleSubmit = async () => {
         if (isSending) return;
         setIsSending(true);
         setSendError("");
         try {
-            const response = await fetch("/api/send-telegram", {
+            const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+            const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+
+            if (!token || !chatId) {
+                throw new Error("Telegram is not configured");
+            }
+
+            const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: telegramMessage }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: telegramMessage,
+                }),
             });
 
-            if (!response.ok) throw new Error("Telegram request failed");
+            if (!response.ok) {
+                const result = await response.json().catch(() => null);
+                throw new Error(result?.description || result?.error || `Request failed (${response.status})`);
+            }
             onClose();
-        } catch {
-            setSendError("Could not send the booking. Please try again.");
+        } catch (error) {
+            setSendError(error.message || "Could not send the booking. Please try again.");
         } finally {
             setIsSending(false);
         }

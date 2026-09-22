@@ -4,16 +4,6 @@ import AccountPanel from '../components/AccountPanel'
 import { FaArrowRight, FaBolt, FaHeadset, FaShieldAlt, FaSlidersH, FaStar } from 'react-icons/fa'
 import { getData } from '../Data/api'
 import VehicleCard from "../components/VehicleCard"
-// const vehicles = [
-//     { name: 'Toyota Fortuner', brand: 'Toyota', year: '2023', price: '$42,000', status: 'In Stock', image: 'https://images.unsplash.com/photo-1623869675781-80aa31012a5a?auto=format&fit=crop&w=900&q=85' },
-//     { name: 'Honda Civic', brand: 'Honda', year: '2022', price: '$28,500', status: 'In Stock', image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=85' },
-//     { name: 'Ford Ranger', brand: 'Ford', year: '2021', price: '$26,000', status: 'Service', image: 'https://images.unsplash.com/photo-1551830820-330a71b99659?auto=format&fit=crop&w=900&q=85' },
-//     { name: 'Mazda CX-5', brand: 'Mazda', year: '2020', price: '$24,000', status: 'In Stock', image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=85' },
-//     { name: 'Toyota Fortuner', brand: 'Toyota', year: '2023', price: '$42,000', status: 'In Stock', image: 'https://images.unsplash.com/photo-1623869675781-80aa31012a5a?auto=format&fit=crop&w=900&q=85' },
-//     { name: 'Honda Civic', brand: 'Honda', year: '2022', price: '$28,500', status: 'In Stock', image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=85' },
-//     { name: 'Ford Ranger', brand: 'Ford', year: '2021', price: '$26,000', status: 'Service', image: 'https://images.unsplash.com/photo-1551830820-330a71b99659?auto=format&fit=crop&w=900&q=85' },
-
-// ]
 
 const heroImages = [
     'https://media.4x4australia.com.au/uploads/2022/04/9dc69ea0-2022_Lexus_LX600_Ultra_Luxury_2.jpg',
