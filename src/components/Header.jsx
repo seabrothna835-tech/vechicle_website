@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setDark } from '../Store/Filter/DarkSlice'
+import { setAuthenticated, setDark, setLogin, setRegister } from '../Store/Filter/DarkSlice'
 import { NavLink } from 'react-router-dom'
 import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa'
 import Logo from "../assets/logoSystem.png"
 import { SlBasketLoaded } from "react-icons/sl";
+import AskModal from "./alert/AskModal";
 
 function Header({ onCartClick }) {
 	const dispatch = useDispatch()
-	const isDark = useSelector((state) => state.dark.isDark)
+	const isDark = useSelector((state) => state.data.isDark)
+	const isAuthenticated = useSelector((state) => state.data.isAuthenticated)
 	const cartCount = useSelector((state) => state.cart.count)
 	const [menuOpen, setMenuOpen] = useState(false)
+	const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
 	const [activeSection, setActiveSection] = useState('home-content')
 	const surface = isDark ? 'border-white/10 bg-[#10274b]' : 'border-slate-200 bg-white'
 	const navLinks = [
@@ -21,6 +24,21 @@ function Header({ onCartClick }) {
 	]
 	const navText = isDark ? 'text-blue-100/75 hover:text-white' : 'text-slate-500 hover:text-[#176bd4]'
 	const activeNav = isDark ? 'text-white' : 'text-[#176bd4]'
+	const handleAuthClick = () => {
+		if (isAuthenticated) {
+			setShowLogoutConfirm(true)
+			return
+		}
+		dispatch(setLogin(true))
+		dispatch(setRegister(false))
+	}
+	const handleLogout = () => {
+		localStorage.removeItem("user")
+		dispatch(setAuthenticated(false))
+		dispatch(setLogin(true))
+		dispatch(setRegister(false))
+		setShowLogoutConfirm(false)
+	}
 
 	useEffect(() => {
 		const sections = ['home-content', 'popular-page', 'about-page', 'contact-page']
@@ -38,6 +56,7 @@ function Header({ onCartClick }) {
 		return () => observer.disconnect()
 	}, [])
 	return (
+		<>
 		<header className={`relative z-20 border-b shadow-sm ${surface}`}>
 			<div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
 				<NavLink className={`inline-flex items-center gap-2 font-['Manrope'] text-lg font-extrabold tracking-tight ${isDark ? 'text-white' : 'text-[#17345c]'}`} to="/" aria-label="Vehicle home">
@@ -53,8 +72,8 @@ function Header({ onCartClick }) {
 				<div className="flex items-center gap-2 sm:gap-3">
 					<button onClick={onCartClick} className={`relative grid h-9 w-9 place-items-center rounded-full transition ${isDark ? 'text-blue-100/75 hover:bg-white/10 hover:text-white' : 'text-slate-500 hover:bg-blue-50 hover:text-[#176bd4]'}`} aria-label={`Shopping cart, ${cartCount} items `}><SlBasketLoaded className="text-md" />{cartCount > 0 && <span className="absolute -right-1 -top-1 grid min-h-2 min-w-2 place-items-center rounded-full px-1 text-xs text-red-500 bg-red-100 leading-4">{cartCount}</span>}</button>
 					<button className={`grid h-9 w-9 place-items-center rounded-full transition ${isDark ? 'text-blue-100/75 hover:bg-white/10 hover:text-white' : 'text-slate-500 hover:bg-blue-50 hover:text-[#176bd4]'}`} onClick={() => dispatch(setDark(!isDark))} aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}>{isDark ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}</button>
-					<NavLink className={`hidden rounded-md border px-4 py-2 font-['Manrope'] text-xs font-semibold transition sm:block ${isDark ? 'border-white/25 text-white hover:bg-white/10' : 'border-slate-200 text-[#17345c] hover:border-blue-200 hover:bg-blue-50'}`} to="/contact">Login</NavLink>
-					<NavLink className="hidden rounded-md bg-[#1976ed] px-4 py-2 font-['Manrope'] text-xs font-bold text-white shadow-lg shadow-blue-500/20 transition hover:bg-[#0f63ce] sm:block" to="/contact">Register</NavLink>
+					<button onClick={handleAuthClick} className={`hidden rounded-md border px-4 py-2 font-['Manrope'] text-xs font-semibold transition sm:block ${isDark ? 'border-white/25 text-white hover:bg-white/10' : 'border-slate-200 text-[#17345c] hover:border-blue-200 hover:bg-blue-50'}`}>{isAuthenticated ? 'Logout' : 'Login'}</button>
+					{!isAuthenticated && <button onClick={() => { dispatch(setRegister(true)); dispatch(setLogin(false)) }} className="hidden rounded-md bg-[#1976ed] px-4 py-2 font-['Manrope'] text-xs font-bold text-white shadow-lg shadow-blue-500/20 transition hover:bg-[#0f63ce] sm:block">Register</button>}
 					<button className={`grid h-9 w-9 place-items-center rounded-md border md:hidden ${isDark ? 'border-white/20 text-white' : 'border-slate-200 text-[#17345c]'}`} onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>{menuOpen ? <FaTimes /> : <FaBars />}</button>
 				</div>
 			</div>
@@ -68,6 +87,17 @@ function Header({ onCartClick }) {
 				</div>
 			</nav>
 		</header>
+		<AskModal
+			isOpen={showLogoutConfirm}
+			title="Log out?"
+			message="Are you sure you want to log out of your account?"
+			confirmText="Logout"
+			cancelText="Cancel"
+			danger
+			onClose={() => setShowLogoutConfirm(false)}
+			onConfirm={handleLogout}
+		/>
+		</>
 	)
 }
 

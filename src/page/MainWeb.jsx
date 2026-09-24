@@ -7,11 +7,16 @@ import Alert from '../components/alert/Alert'
 import ViewDetailVehicle from '../components/ViewDetailVechicle'
 import {useDispatch,useSelector } from 'react-redux'
 import { viewItem as setViewItem } from '../Store/CartSlice'
+import { setLogin, setRegister } from '../Store/Filter/DarkSlice'
+import Register from '../components/Register'
+import Login from '../components/Login'
 
 function MainWeb() {
     const dispatch = useDispatch()
     const selectedViewItem = useSelector((state) => state.cart.viewItem)
     const cartCount = useSelector((state) => state.cart.count)
+    const isLogin = useSelector((state)=>state.data.isLogin)
+    const isRegister = useSelector((state)=>state.data.isRegister)
     const previousCartCount = useRef(cartCount)
     const [alert, setAlert] = useState({
         show: false,
@@ -47,6 +52,20 @@ function MainWeb() {
                 <ViewDetailVehicle
                     vehicle={selectedViewItem}
                     onClose={() => dispatch(setViewItem(null))}
+                />
+            )}
+            {isLogin&&(
+                <Login
+                    open={true}
+                    onClose={() => dispatch(setLogin(false))}
+                    onSwitch={() => { dispatch(setLogin(false)); dispatch(setRegister(true)) }}
+                />
+            )}
+            {isRegister&&(
+                <Register
+                    open={true}
+                    onClose={() => dispatch(setRegister(false))}
+                    onSwitch={() => { dispatch(setRegister(false)); dispatch(setLogin(true)) }}
                 />
             )}
         </main>

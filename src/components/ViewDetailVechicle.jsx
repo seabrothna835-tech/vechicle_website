@@ -28,7 +28,7 @@ function ViewDetailVehicle({
 }) {
     const [activeImage, setActiveImage] = useState(0);
     const [activeTab, setActiveTab] = useState("specification");
-    const isDark = useSelector((state)=>state.dark.isDark)
+    const isDark = useSelector((state)=>state.data.isDark)
 
     if (!vehicle) return null;
 

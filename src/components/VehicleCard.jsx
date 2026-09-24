@@ -13,14 +13,14 @@ import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 
 export function VehicleCard({ v, vehicle }) {
     const dispatch = useDispatch()
-    const isDark = useSelector((state) => state.dark.isDark)
+    const isDark = useSelector((state) => state.data.isDark)
     const wishlist = useSelector((state) => state.cart.wishlist)
     const item = v ?? vehicle ?? {}
     const itemId = item.id ?? item.name
     const favorite = wishlist.some((savedItem) => (savedItem.id ?? savedItem.name) === itemId)
     return (
         <div
-            className={`scroll-pop group flex flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${isDark
+            className={`group flex flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${isDark
                 ? "border-[#27344B] bg-[#0B1A38] text-white"
                 : "border-[#DDE3EC] bg-white text-[#172033]"
                 }`}

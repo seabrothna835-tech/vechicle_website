@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useSelector } from "react-redux";
 import GetFee from "./GetFee";
+import Alert from "./alert/Alert";
 
 const formatPrice = (n) =>
     new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
@@ -76,9 +77,11 @@ export function BookingItem({
     item,
     onAddToCart,
 }) {
-    const isDark = useSelector((state)=>state.dark.isDark)
+    const isDark = useSelector((state)=>state.data.isDark)
+    const isAuthenticated = useSelector((state) => state.data.isAuthenticated)
     const theme = getTheme(isDark);
     const [showFee, setShowFee] = useState(false);
+    const [warning, setWarning] = useState("");
 
     // Close with the Escape key
     useEffect(() => {
@@ -95,6 +98,11 @@ export function BookingItem({
     }
 
     const handleCart = (data) => {
+        if (!isAuthenticated) {
+            setWarning("Please log in before checking out.");
+            window.setTimeout(() => setWarning(""), 2500);
+            return;
+        }
         onAddToCart?.(data);
         setShowFee({
             ...data.item,
@@ -104,6 +112,7 @@ export function BookingItem({
     };
 
     return (
+        <>
         <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
             onClick={onClose}
@@ -138,5 +147,7 @@ export function BookingItem({
                 <CartForm item={item} theme={theme} onSubmit={handleCart} />
             </div>
         </div>
+        {warning && <Alert message={warning} type="warning" />}
+        </>
     );
 }

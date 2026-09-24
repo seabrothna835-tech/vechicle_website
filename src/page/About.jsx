@@ -31,7 +31,7 @@ function Eyebrow({ children, className = "" }) {
 }
 
 export default function AboutPage() {
-	const isDark = useSelector((state)=>state.dark.isDark)
+	const isDark = useSelector((state)=>state.data.isDark)
 	return (
 		<div className={`min-h-screen ${isDark? "bg-darkBG text-darktext":"bg-[#F3F7FB] text-lighttext"}`}>
 			{/* About */}
@@ -102,7 +102,7 @@ export default function AboutPage() {
 			<section className="mx-auto max-w-6xl px-6 py-14 scroll-pop">
 				<div className="text-center">
 					<Eyebrow>Why choose us</Eyebrow>
-					<h2 className="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
+					<h2 className="mt-2 text-3xl font-bold ">
 						The Benefits of Choosing Vechicle
 					</h2>
 					<p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -114,10 +114,10 @@ export default function AboutPage() {
 				<div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
 					{benefits.map(({ icon: Icon, title, text }) => (
 						<div key={title} className="flex flex-col items-center text-center">
-							<div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-400">
+							<div className={`flex h-14 w-14 items-center justify-center rounded-full ${isDark? "bg-blue-950 hover:bg-blue-900":"bg-blue-100 hover:bg-blue-200"}`}>
 								<Icon size={24} />
 							</div>
-							<h3 className="mt-4 text-sm font-semibold text-slate-900 dark:text-white">{title}</h3>
+							<h3 className="mt-4 text-sm font-semibold ">{title}</h3>
 							<p className="mt-1 text-xs leading-relaxed">{text}</p>
 						</div>
 					))}

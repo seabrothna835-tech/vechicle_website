@@ -20,7 +20,7 @@ const normalizeValue = (value) =>
         .replace(/^_+|_+$/g, '')
 
 function Home() {
-    const isDark = useSelector((state) => state.dark.isDark)
+    const isDark = useSelector((state) => state.data.isDark)
     const [saved, setSaved] = useState([])
     const [search, setSearch] = useState({ category: 'all', brand: 'all', fuel: 'all' })
     const [heroIndex, setHeroIndex] = useState(0)
@@ -164,7 +164,8 @@ function Home() {
         { key: 'brand', label: 'Brand', options: brand },
         { key: 'fuel', label: 'Fuel Type', options: fuelType },
     ]
-
+    const userResgister = localStorage.getItem("user");
+    console.log("User : ",userResgister)
     return (
         <div className={isDark ? 'min-h-screen bg-darkBG' : 'min-h-screen bg-[#f5f9fe]'}>
             <main id="top">
@@ -232,16 +233,16 @@ function Home() {
                         </div>
                     </div>
                 </section>
-                <section id="popular" className="scroll-mt-16 mx-auto grid max-w-7xl gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[minmax(0,1fr)_195px] lg:px-10 lg:py-10">
+                <section id="popular" className="scroll-pop scroll-mt-16 mx-auto grid max-w-7xl gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[minmax(0,1fr)_195px] lg:px-10 lg:py-10">
                     <div>
                         <div className="mb-6 flex items-end justify-between">
                             <div><p className="mb-2 font-['DM_Mono'] text-[10px] uppercase tracking-[.16em] text-[#1976ed]">Our collection</p><h2 className={`text-2xl font-extrabold ${isDark ? 'text-white' : 'text-[#1b355a]'}`}>Popular Vehicles</h2><span className="mt-3 block h-1 w-8 bg-[#1976ed]" /></div>
                                 <a className="text-xs font-bold text-[#1976ed] transition hover:text-[#0f63ce]" href="/vehicles">View All <span className="text-base">→</span></a>
                         </div>
                         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                            {visibleVehicles.map((vehicle) => (
+                            {visibleVehicles.map((vehicle, index) => (
                                 <VehicleCard
-                                    key={vehicle.id ?? `${vehicle.name}-${vehicle.year}`}
+                                    key={`${vehicle.id ?? 'vehicle'}-${vehicle.name ?? 'unnamed'}-${vehicle.modelId ?? vehicle.model ?? index}-${index}`}
                                     vehicle={vehicle}
                                     onSave={toggleSaved}
                                 />

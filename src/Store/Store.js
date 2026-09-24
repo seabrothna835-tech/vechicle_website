@@ -1,12 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import darkReducer from "./Filter/DarkSlice";
+import dataReducer from "./Filter/DarkSlice";
 import cartReducer from "./CartSlice";
 
 const STORAGE_KEY = "etec-store";
 
+const getStorage = () => window.sessionStorage;
+
 const loadState = () => {
     try {
-        const savedState = localStorage.getItem(STORAGE_KEY);
+        localStorage.removeItem(STORAGE_KEY);
+        const savedState = getStorage().getItem(STORAGE_KEY);
         return savedState ? JSON.parse(savedState) : undefined;
     } catch {
         return undefined;
@@ -15,7 +18,7 @@ const loadState = () => {
 
 export const Store = configureStore({
     reducer: {
-        dark: darkReducer,
+        data: dataReducer,
         cart: cartReducer,
     },
     preloadedState: loadState(),
@@ -23,7 +26,7 @@ export const Store = configureStore({
 
 Store.subscribe(() => {
     try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(Store.getState()));
+        getStorage().setItem(STORAGE_KEY, JSON.stringify(Store.getState()));
     } catch {
     }
 });

@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 
 function Contact() {
 	const form = useRef();
-	const isDark = useSelector((state) => state.dark.isDark)
+	const isDark = useSelector((state) => state.data.isDark)
 	const [sent, setSent] = useState(false)
 	const [isSending, setIsSending] = useState(false)
 	const [error, setError] = useState('')

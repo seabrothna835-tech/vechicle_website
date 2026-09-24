@@ -105,8 +105,19 @@ export default function GetFee({
 
     const money = (n) => `$${Number(n).toLocaleString("en-US", { minimumFractionDigits: 2 })}`;
     const bookingFee = booking.totalPrice * 0.3;
+    let registeredUser = null;
+    try {
+        const storedUser = localStorage.getItem("user");
+        registeredUser = storedUser ? JSON.parse(storedUser) : null;
+    } catch {
+        registeredUser = null;
+    }
     const telegramMessage = [
         "============ ការកក់ថ្មី ============",
+        "",
+        `👤 ឈ្មោះអ្នកប្រើ: ${registeredUser?.name ?? "Unknown"}`,
+        `📧 អ៊ីមែល: ${registeredUser?.email ?? "Unknown"}`,
+        `📱 លេខទូរស័ព្ទ: ${registeredUser?.phone || "Not provided"}`,
         "",
         `🆔 លេខកូដ: ${booking.id}`,
         `🚘 ឈ្មោះរថយន្ត: ${booking.name}`,

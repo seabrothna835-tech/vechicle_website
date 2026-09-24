@@ -5,6 +5,8 @@ import Contact from '../page/Contact'
 import RouteLayout from '../components/Layout/Layout'
 import MainWeb from '../page/MainWeb'
 import PopularCar from '../page/PopularCar'
+import Login from '../components/Login'
+import Register from '../components/Register'
 
 function AppRoutes() {
 	return (
@@ -17,6 +19,8 @@ function AppRoutes() {
 					<Route path="/about" element={<About />} />
 					<Route path="/popularCar" element={<PopularCar />} />
 					<Route path="/contact" element={<Contact />} />
+					<Route path='/login' element={<Login />}/>
+					<Route path='/register' element={<Register />}/>
 				</Route>
 			</Routes>
 		</BrowserRouter>

@@ -187,15 +187,15 @@ function VehicleTypeChart({ isDark }) {
     );
 }
 export default function PopularCar() {
-    const isDark = useSelector((state) => state.dark.isDark);
+    const isDark = useSelector((state) => state.data.isDark);
     const pageTheme = isDark
         ? "bg-darkBG text-slate-100"
         : "bg-[#f3f7fb] text-slate-800";
     const mutedText = isDark ? "text-slate-400" : "text-slate-500";
     const rankStyles = [
-        { label: "Top 1", badge: "bg-blue-500 text-white", value: "text-blue-400", ring: "ring-1 ring-blue-500/50" },
-        { label: "Top 2", badge: "bg-emerald-500/15 text-emerald-400", value: "text-emerald-400", ring: "" },
-        { label: "Top 3", badge: "bg-orange-500/15 text-orange-400", value: "text-orange-400", ring: "" },
+        { label: "Top 1", badge: "bg-emerald-500/15 text-emerald-400", value: "text-emerald-400", border: "border-emerald-500/50" },
+        { label: "Top 2", badge: "bg-blue-500 text-white", value: "text-blue-400", border: "border-blue-500/50" },
+        { label: "Top 3", badge: "bg-orange-500/15 text-orange-400", value: "text-orange-400", border: "border-orange-500/50" },
     ];
     const top3 = [...types].sort((a, b) => b.amount - a.amount).slice(0, 3);
     return (
@@ -215,8 +215,8 @@ export default function PopularCar() {
                         return (
                         <div
                             key={stat.name}
-                            className={`scroll-pop rounded-2xl border p-5 ${r.ring} ${
-                            isDark ? "border-slate-700 bg-slate-900/70" : "border-slate-200 bg-white"
+                            className={`scroll-pop hover:-translate-y-1 shadow-2xl rounded-2xl border-l-5 p-5 ${r.border} ${
+                            isDark ? " bg-slate-900/70" : "bg-white"
                             }`}
                         >
                             <div className="flex items-center justify-between">
@@ -238,7 +238,9 @@ export default function PopularCar() {
                         );
                     })}
                 </div>
-                <VehicleTypeChart isDark={isDark} />
+                <div className="hover:-translate-y-1 shadow-xl">
+                    <VehicleTypeChart isDark={isDark} />
+                </div>
             </div>
         </div>
     );

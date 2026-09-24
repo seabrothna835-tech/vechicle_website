@@ -9,7 +9,7 @@ import { viewItem as setViewItem } from '../Store/CartSlice'
 
 function Vechicles() {
 	const dispatch = useDispatch()
-	const isDark = useSelector((state) => state.dark.isDark)
+	const isDark = useSelector((state) => state.data.isDark)
 	const selectedViewItem = useSelector((state) => state.cart.viewItem)
 	const [query, setQuery] = useState('')
 	const [vechicle, setVechicle] = useState([])
@@ -75,9 +75,9 @@ function Vechicles() {
 					</div>
 
 					<div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-						{filteredVehicles.map((v) =>
+						{filteredVehicles.map((v, index) =>
 							<VehicleCard
-								key={v.id}
+								key={`${v.id ?? 'vehicle'}-${v.name ?? 'unnamed'}-${v.modelId ?? v.model ?? index}-${index}`}
 								vehicle={v}
 							/>
 						)}

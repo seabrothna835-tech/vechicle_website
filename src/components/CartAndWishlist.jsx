@@ -7,7 +7,7 @@ import ViewDetailVehicle from './ViewDetailVechicle'
 
 function CartAndWishlist() {
     const dispatch = useDispatch()
-    const isDark = useSelector((state) => state.dark.isDark)
+    const isDark = useSelector((state) => state.data.isDark)
     const { cartItems, wishlist, panelOpen } = useSelector((state) => state.cart)
     const [activeTab, setActiveTab] = useState('cart')
     const [itemCheck, setItemCheck] = useState()
@@ -37,7 +37,7 @@ function CartAndWishlist() {
                 <div className={`flex items-center justify-between border-b px-5 py-4 ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
                     <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">Your collection</p>
-                        <h2 className="mt-1 text-xl font-bold">Cart & Wishlist</h2>
+                        <h2 className="mt-1 text-xl font-bold">Bag & Wishlist</h2>
                     </div>
                     <button type="button" onClick={() => dispatch(setPanelOpen(false))} className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Close panel">
                         <X size={20} />
@@ -46,35 +46,12 @@ function CartAndWishlist() {
 
                 <div className={`grid grid-cols-2 border-b p-2 ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
                     <button type="button" onClick={() => setActiveTab('cart')} className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${activeTab === 'cart' ? 'bg-blue-600 text-white' : 'text-slate-500'}`}>
-                        <ShoppingCart size={16} /> Cart ({cartItems.length})
+                        <ShoppingCart size={16} /> Bag ({cartItems.length})
                     </button>
                     <button type="button" onClick={() => setActiveTab('wishlist')} className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${activeTab === 'wishlist' ? 'bg-rose-500 text-white' : 'text-slate-500'}`}>
                         <Heart size={16} /> Favorites ({wishlist.length})
                     </button>
                 </div>
-
-                {/* <div className="flex-1 space-y-3 overflow-y-auto p-4">
-                    {items.length === 0 ? (
-                        <div className="flex h-full flex-col items-center justify-center text-center text-slate-400">
-                            {activeTab === 'cart' ? <ShoppingCart size={34} strokeWidth={1.5} /> : <Heart size={34} strokeWidth={1.5} />}
-                            <p className="mt-3 font-semibold">{activeTab === 'cart' ? 'Your cart is empty' : 'No favorites yet'}</p>
-                            <p className="mt-1 text-sm">Add a vehicle to see it here.</p>
-                        </div>
-                    ) : items.map((item, index) => (
-                        <div key={`${item.id ?? item.name}-${index}`} className={`flex gap-3 rounded-xl border p-3 ${isDark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-slate-50'}`}>
-                            <img src={item.pic ?? item.image} alt="" className="h-16 w-20 rounded-lg object-cover" />
-                            <div className="min-w-0 flex-1">
-                                <h3 className="truncate font-semibold">{item.name ?? 'Vehicle'}</h3>
-                                <p className="mt-1 text-xs text-slate-500">{item.brand ?? 'Unknown brand'} {item.model ?? ''}</p>
-                                <p className="mt-1 text-xs font-medium text-blue-500">{item.status ?? 'Status unavailable'}</p>
-                            </div>
-                            <button className={`bg-green-300 rounded-lg px-4 py-2`}>Check out</button>
-                            <button type="button" onClick={() => dispatch(remove(index))} className="self-start rounded-md p-1 text-slate-400 hover:bg-red-50 hover:text-red-500" aria-label={`Remove ${item.name ?? 'vehicle'}`}>
-                                <X size={16} />
-                            </button>
-                        </div>
-                    ))}
-                </div> */}
                 <div className="flex-1 space-y-3 overflow-y-auto p-4">
                     {items.length === 0 ? (
                         <div className="flex h-full flex-col items-center justify-center text-center text-slate-400">
