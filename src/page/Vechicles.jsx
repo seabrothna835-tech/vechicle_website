@@ -18,30 +18,71 @@ function Vechicles() {
 		return matchesQuery
 	}), [vechicle, query])
 	// ==========Get  all Vechicle=====================
-	const getAllVechicle = async () => {
-		try {
-			const data = await getData("vehicles")
-			if (Array.isArray(data) && data.length !== 0) {
-				setVechicle(data.map((vehicle) => ({
-					...vehicle,
-					brandId: vehicle.brand?.id ?? vehicle.brandId,
-					brand: vehicle.brand?.label ?? vehicle.brand ?? "",
-					modelId: vehicle.model?.id ?? vehicle.modelId,
-					model: vehicle.model?.label ?? vehicle.model ?? "",
-					categoryId: vehicle.category?.id ?? vehicle.categoryId,
-					category: vehicle.category?.label ?? vehicle.category ?? "",
-					fuelTypeId: vehicle.fuelType?.id ?? vehicle.fuelTypeId,
-					type: vehicle.brand?.value ?? vehicle.brand ?? "",
-					image: vehicle.image ?? vehicle.pic ?? "",
-				})))
-			}
-		} catch (error) {
-			console.log("Error", error)
-		}
-	}
-	useEffect(() => {
-		getAllVechicle()
-	}, [])
+	// const getAllVechicle = async () => {
+	// 	try {
+	// 		const data = await getData("vehicles")
+	// 		if (Array.isArray(data) && data.length !== 0) {
+	// 			setVechicle(data.map((vehicle) => ({
+	// 				...vehicle,
+	// 				brandId: vehicle.brand?.id ?? vehicle.brandId,
+	// 				brand: vehicle.brand?.label ?? vehicle.brand ?? "",
+	// 				modelId: vehicle.model?.id ?? vehicle.modelId,
+	// 				model: vehicle.model?.label ?? vehicle.model ?? "",
+	// 				categoryId: vehicle.category?.id ?? vehicle.categoryId,
+	// 				category: vehicle.category?.label ?? vehicle.category ?? "",
+	// 				fuelTypeId: vehicle.fuelType?.id ?? vehicle.fuelTypeId,
+	// 				type: vehicle.brand?.value ?? vehicle.brand ?? "",
+	// 				image: vehicle.image ?? vehicle.pic ?? "",
+	// 			})))
+	// 		}
+	// 	} catch (error) {
+	// 		console.log("Error", error)
+	// 	}
+	// }
+	// useEffect(() => {
+	// 	getAllVechicle()
+	// }, [])
+
+	// ========== Get all Vehicles =====================
+    const getAllVechicle = async () => {
+        try {
+            // Try fetching via API module, or directly fall back to public JSON
+            let rawData = await getData("vehicles");
+
+            // If API returns an object with a vehicles array property (like your db.json structure)
+            if (rawData && !Array.isArray(rawData) && Array.isArray(rawData.vehicles)) {
+                rawData = rawData.vehicles;
+            }
+
+            // Fallback fetch to static public file if API returned empty
+            if (!Array.isArray(rawData) || rawData.length === 0) {
+                const res = await fetch('/VechicleCard.json');
+                const json = await res.json();
+                rawData = Array.isArray(json) ? json : json.vehicles || [];
+            }
+
+            if (Array.isArray(rawData) && rawData.length !== 0) {
+                setVechicle(rawData.map((vehicle) => ({
+                    ...vehicle,
+                    brandId: vehicle.brand?.id ?? vehicle.brandId,
+                    brand: vehicle.brand?.label ?? vehicle.brand ?? "",
+                    modelId: vehicle.model?.id ?? vehicle.modelId,
+                    model: vehicle.model?.label ?? vehicle.model ?? "",
+                    categoryId: vehicle.category?.id ?? vehicle.categoryId,
+                    category: vehicle.category?.label ?? vehicle.category ?? "",
+                    fuelTypeId: vehicle.fuelType?.id ?? vehicle.fuelTypeId,
+                    type: vehicle.brand?.value ?? vehicle.brand ?? "",
+                    image: vehicle.image ?? vehicle.pic ?? "",
+                })))
+            }
+        } catch (error) {
+            console.error("Error fetching vehicle data:", error)
+        }
+    }
+
+    useEffect(() => {
+        getAllVechicle()
+    }, [])
 	const cartCount = useSelector((state) => state.cart.count)
 	const previousCartCount = useRef(cartCount)
 	const [alert, setAlert] = useState({
