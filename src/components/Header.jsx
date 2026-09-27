@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setAuthenticated, setDark, setLogin, setRegister } from '../Store/Filter/DarkSlice'
+import { setAuthenticated, setDark, setLogin, setRegister, setShowLogoutConfirm } from '../Store/Filter/DarkSlice'
 import { NavLink } from 'react-router-dom'
 import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa'
 import Logo from "../assets/logoSystem.png"
 import { SlBasketLoaded } from "react-icons/sl";
-import AskModal from "./alert/AskModal";
 
 function Header({ onCartClick }) {
 	const dispatch = useDispatch()
@@ -13,7 +12,6 @@ function Header({ onCartClick }) {
 	const isAuthenticated = useSelector((state) => state.data.isAuthenticated)
 	const cartCount = useSelector((state) => state.cart.count)
 	const [menuOpen, setMenuOpen] = useState(false)
-	const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
 	const [activeSection, setActiveSection] = useState('home-content')
 	const surface = isDark ? 'border-white/10 bg-[#10274b]' : 'border-slate-200 bg-white'
 	const navLinks = [
@@ -26,7 +24,7 @@ function Header({ onCartClick }) {
 	const activeNav = isDark ? 'text-white' : 'text-[#176bd4]'
 	const handleAuthClick = () => {
 		if (isAuthenticated) {
-			setShowLogoutConfirm(true)
+			dispatch(setShowLogoutConfirm(true))
 			return
 		}
 		dispatch(setLogin(true))
@@ -37,7 +35,7 @@ function Header({ onCartClick }) {
 		dispatch(setAuthenticated(false))
 		dispatch(setLogin(true))
 		dispatch(setRegister(false))
-		setShowLogoutConfirm(false)
+		dispatch(setShowLogoutConfirm(false))
 	}
 
 	useEffect(() => {
@@ -87,16 +85,6 @@ function Header({ onCartClick }) {
 				</div>
 			</nav>
 		</header>
-		<AskModal
-			isOpen={showLogoutConfirm}
-			title="Log out?"
-			message="Are you sure you want to log out of your account?"
-			confirmText="Logout"
-			cancelText="Cancel"
-			danger
-			onClose={() => setShowLogoutConfirm(false)}
-			onConfirm={handleLogout}
-		/>
 		</>
 	)
 }

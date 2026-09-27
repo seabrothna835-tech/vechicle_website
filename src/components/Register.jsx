@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaCar } from "react-icons/fa6";
+import {setLogin } from '../Store/Filter/DarkSlice'
 
 export default function Register({
     open = true,
@@ -19,6 +20,7 @@ export default function Register({
     const [loading, setLoading] = useState(false);
     const closeRef = useRef(null);
     const isDark = useSelector((state)=>state.data.isDark)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (open) {
@@ -82,7 +84,7 @@ export default function Register({
             const data = { name, email, phone, password };
             const storedUser = localStorage.getItem("user");
             const oldUser = storedUser ? JSON.parse(storedUser) : null;
-
+            dispatch(setLogin(true))
             if (oldUser?.email?.toLowerCase() === email.trim().toLowerCase()) {
                 setError("An account with this email already exists.");
                 return;
@@ -148,7 +150,7 @@ export default function Register({
                             autoComplete="name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            placeholder="Sok Dara"
+                            placeholder="Seab Rothna"
                             className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition-colors ${t.input}`}
                         />
                     </div>
@@ -163,7 +165,7 @@ export default function Register({
                             autoComplete="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="you@example.com"
+                            placeholder="rothna@gmail.com"
                             className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition-colors ${t.input}`}
                         />
                     </div>
@@ -178,7 +180,7 @@ export default function Register({
                             autoComplete="tel"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
-                            placeholder="+855 12 345 678"
+                            placeholder="+12 345 678"
                             className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition-colors ${t.input}`}
                         />
                     </div>

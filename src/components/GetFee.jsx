@@ -51,6 +51,7 @@ export default function GetFee({
     open = true, 
     onClose = () => { }, 
     booking, 
+    onBookingComplete = () => { },
     getFee = mockGetFee, 
     onExpired = () => { } }) {
     const [step, setStep] = useState("loading");
@@ -162,6 +163,7 @@ export default function GetFee({
                 const result = await response.json().catch(() => null);
                 throw new Error(result?.description || result?.error || `Request failed (${response.status})`);
             }
+            onBookingComplete(booking);
             onClose();
         } catch (error) {
             setSendError(error.message || "Could not send the booking. Please try again.");

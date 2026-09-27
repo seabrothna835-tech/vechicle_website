@@ -403,7 +403,14 @@
       "fuel": "Petrol",
       "mileage": 1231,
       "purchasePrice": 24800,
-      "sellingPrice": 3100
+      "sellingPrice": 3100,
+
+      "registrationDate":"01/02/2024",
+      "doors":2,
+      "from":"Chaina",
+      "chair":2,
+      "color":"gray",
+      "engineCapacity": 1.5
     },
     {
       "id": "VH-2026-0142",
@@ -430,7 +437,14 @@
       "fuel": "Petrol",
       "mileage": 4545,
       "purchasePrice": 29500,
-      "sellingPrice": 4200
+      "sellingPrice": 4200,
+
+      "registrationDate":"01/02/2024",
+      "doors":2,
+      "from":"Japan",
+      "chair":2,
+      "color":"Red",
+      "engineCapacity": 2.5
     },
     {
       "id": "VH-2026-0143",
@@ -457,7 +471,14 @@
       "fuel": "Diesel",
       "mileage": 1231,
       "purchasePrice": 24800,
-      "sellingPrice": 3100
+      "sellingPrice": 3100,
+
+      "registrationDate":"04/02/2024",
+      "doors":4,
+      "from":"United States",
+      "chair":5,
+      "color":"Blue",
+      "engineCapacity": 1.5
     },
     {
       "id": "VH-2026-0144",
@@ -484,34 +505,14 @@
       "fuel": "Hybrid",
       "mileage": 18600,
       "purchasePrice": 68500,
-      "sellingPrice": 7200
-    },
-    {
-      "id": "VH-2026-0145",
-      "brand": {
-        "id": 15,
-        "value": "TESLA",
-        "label": "Tesla"
-      },
-      "model": {
-        "id": 12,
-        "value": "MODEL_3",
-        "label": "Model 3"
-      },
-      "name": "Tesla Model 3",
-      "category": {
-        "id": 1,
-        "value": "SEDAN",
-        "label": "Sedan"
-      },
-      "status": "Available",
-      "pic": "https://images.unsplash.com/photo-1560958089-b8a1929cea89",
-      "year": 2024,
-      "transmission": "Auto",
-      "fuel": "Electric",
-      "mileage": 6300,
-      "purchasePrice": 41900,
-      "sellingPrice": 6300
+      "sellingPrice": 7200,
+
+      "registrationDate":"05/02/2024",
+      "doors":4,
+      "from":"Chaina",
+      "chair":4,
+      "color":"White",
+      "engineCapacity": 1.5
     },
   {
     "id": "VH-2026-0145",
@@ -526,7 +527,13 @@
     "fuel": "Electric",
     "mileage": 6300,
     "purchasePrice": 41900,
-    "sellingPrice": 6300
+    "sellingPrice": 6300,
+    "registrationDate":"01/02/2024",
+      "doors":4,
+      "from":"United States",
+      "chair":4,
+      "color":"White",
+      "engineCapacity": 1.5
   },
   {
     "id": "VH-2026-0146",
@@ -541,7 +548,13 @@
     "fuel": "Hybrid",
     "mileage": 18200,
     "purchasePrice": 28500,
-    "sellingPrice": 24900
+    "sellingPrice": 24900,
+    "registrationDate":"01/02/2024",
+      "doors":4,
+      "from":"Japan",
+      "chair":4,
+      "color":"Gray",
+      "engineCapacity": 1.5
   },
   {
     "id": "VH-2026-0147",
@@ -556,7 +569,13 @@
     "fuel": "Petrol",
     "mileage": 32100,
     "purchasePrice": 22300,
-    "sellingPrice": 17800
+    "sellingPrice": 17800,
+    "registrationDate":"01/02/2024",
+      "doors":4,
+      "from":"Japan",
+      "chair":4,
+      "color":"Black",
+      "engineCapacity": 1.5
   },
   {
     "id": "VH-2026-0148",
@@ -571,7 +590,13 @@
     "fuel": "Petrol",
     "mileage": 15400,
     "purchasePrice": 45200,
-    "sellingPrice": 39900
+    "sellingPrice": 39900,
+    "registrationDate":"01/02/2024",
+      "doors":4,
+      "from":"United States",
+      "chair":5,
+      "color":"Gray",
+      "engineCapacity": 3.5
   },
   {
     "id": "VH-2026-0149",

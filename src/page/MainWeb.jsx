@@ -7,9 +7,10 @@ import Alert from '../components/alert/Alert'
 import ViewDetailVehicle from '../components/ViewDetailVechicle'
 import {useDispatch,useSelector } from 'react-redux'
 import { viewItem as setViewItem } from '../Store/CartSlice'
-import { setLogin, setRegister } from '../Store/Filter/DarkSlice'
+import { setAuthenticated, setLogin, setRegister, setShowLogoutConfirm } from '../Store/Filter/DarkSlice'
 import Register from '../components/Register'
 import Login from '../components/Login'
+import AskModal from '../components/alert/AskModal'
 
 function MainWeb() {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ function MainWeb() {
     const cartCount = useSelector((state) => state.cart.count)
     const isLogin = useSelector((state)=>state.data.isLogin)
     const isRegister = useSelector((state)=>state.data.isRegister)
+    const showLogoutConfirm = useSelector((state) => state.data.showLogoutConfirm)
     const previousCartCount = useRef(cartCount)
     const [alert, setAlert] = useState({
         show: false,
@@ -40,6 +42,13 @@ function MainWeb() {
 
         return () => window.clearTimeout(timeoutId)
     }, [cartCount])
+    const confirmLogout = () => {
+		localStorage.removeItem("user")
+		dispatch(setAuthenticated(false))
+		dispatch(setLogin(true))
+		dispatch(setRegister(false))
+        dispatch(setShowLogoutConfirm(false))
+	}
 
     return (
         <main>
@@ -68,6 +77,16 @@ function MainWeb() {
                     onSwitch={() => { dispatch(setRegister(false)); dispatch(setLogin(true)) }}
                 />
             )}
+            <AskModal
+                isOpen={showLogoutConfirm}
+                title="Log out?"
+                message="Are you sure you want to log out of your account?"
+                confirmText="Logout"
+                cancelText="Cancel"
+                danger
+                onClose={() => dispatch(setShowLogoutConfirm(false))}
+                onConfirm={confirmLogout}
+            />
         </main>
     )
 }

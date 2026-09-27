@@ -5,8 +5,9 @@ const initialState = {
     alert: false,
     cartItems: [],
     wishlist: [],
+    bookings: [],
     viewItem: null,
-    setPanelOpen:false
+    panelOpen: false
 }
 
 const cartSlice = createSlice({
@@ -44,11 +45,26 @@ const cartSlice = createSlice({
         removeFavorite: (state, action) => {
             state.wishlist.splice(action.payload, 1)
         },
+        completeBooking: (state, action) => {
+            state.bookings ??= []
+            state.cartItems ??= []
+            const { booking, item } = action.payload
+            state.bookings.push(booking)
+            const itemId = item.id ?? item.name
+            const cartIndex = state.cartItems.findIndex(
+                (cartItem) => (cartItem.id ?? cartItem.name) === itemId
+            )
+            if (cartIndex >= 0) state.cartItems.splice(cartIndex, 1)
+            state.count = state.cartItems.length
+        },
+        removeBooking: (state, action) => {
+            state.bookings.splice(action.payload, 1)
+        },
         setPanelOpen: (state, action) => {
             state.panelOpen = action.payload
         },
     },
 })
 
-export const {viewItem, addItem, toggleFavorite, removeItem, removeFavorite, setPanelOpen } = cartSlice.actions
+export const {viewItem, addItem, toggleFavorite, removeItem, removeFavorite, completeBooking, removeBooking, setPanelOpen } = cartSlice.actions
 export default cartSlice.reducer

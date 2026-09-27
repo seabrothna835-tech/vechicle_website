@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setAuthenticated, setLogin, setRegister } from "../Store/Filter/DarkSlice"
+import { setAuthenticated, setLogin, setRegister, setShowLogoutConfirm } from "../Store/Filter/DarkSlice"
 import { FaPeopleGroup } from "react-icons/fa6";
 import AskModal from "./alert/AskModal";
 import { IoStar } from "react-icons/io5";
@@ -12,7 +12,6 @@ function AccountPanel() {
 	const dispatch = useDispatch()
 	const isDark = useSelector((state)=>state.data.isDark)
 	const isAuthenticated = useSelector((state) => state.data.isAuthenticated)
-	const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
 	const openRegister = () => {
 		if (isAuthenticated) {
 			localStorage.removeItem("user")
@@ -21,14 +20,7 @@ function AccountPanel() {
 		dispatch(setLogin(false))
 	}
 	const handleLogout = () => {
-		setShowLogoutConfirm(true)
-	}
-	const confirmLogout = () => {
-		localStorage.removeItem("user")
-		dispatch(setAuthenticated(false))
-		dispatch(setLogin(true))
-		dispatch(setRegister(false))
-		setShowLogoutConfirm(false)
+		dispatch(setShowLogoutConfirm(true))
 	}
 	return (
 		<>
@@ -46,16 +38,6 @@ function AccountPanel() {
 				<p className="flex items-center"><span className="mr-3 text-lg text-[#176bd4]"><IoStar /></span>Best Prices</p>
 			</div>
 		</aside>
-		<AskModal
-			isOpen={showLogoutConfirm}
-			title="Log out?"
-			message="Are you sure you want to log out of your account?"
-			confirmText="Logout"
-			cancelText="Cancel"
-			danger
-			onClose={() => setShowLogoutConfirm(false)}
-			onConfirm={confirmLogout}
-		/>
 		</>
 	)
 }

@@ -9,6 +9,7 @@ import {
     Palette,
     Users,
     Cog,
+    Sofa,
     FileText,
     RotateCcw,
     Trash2,
@@ -58,19 +59,14 @@ function ViewDetailVehicle({
 
     const specs = [
         {
-            label: "Seating Capacity",
-            value: vehicle.seatingCapacity || "-",
-            icon: Users,
-        },
-        {
             label: "Body Style",
             value: vehicle.category || vehicle.bodyStyle || "-",
             icon: Car,
         },
         {
-            label: "Drive Type",
-            value: vehicle.driveType || "-",
-            icon: Cog,
+            label: "Chair",
+            value: `${vehicle.chair} Chairs` || "-",
+            icon: Sofa,
         },
         {
             label: "Mileage",
@@ -86,12 +82,12 @@ function ViewDetailVehicle({
         },
         {
             label: "Doors",
-            value: vehicle.doors || "-",
+            value: `${vehicle.doors} sides` || "-",
             icon: DoorOpen,
         },
         {
-            label: "Location",
-            value: vehicle.location || "-",
+            label: "From",
+            value: vehicle.from || "-",
             icon: MapPin,
         },
         {
@@ -321,7 +317,7 @@ function ViewDetailVehicle({
                             <InfoCard
                                 label="Vehicle Code"
                                 value={
-                                    vehicle.vehicleCode ||
+                                    vehicle.id ||
                                     vehicle.vechicleCode ||
                                     "-"
                                 }
@@ -359,7 +355,7 @@ function ViewDetailVehicle({
 
                             <InfoCard
                                 label="Fuel Type"
-                                value={vehicle.fuelType || "-"}
+                                value={vehicle.fuel || "-"}
                                 icon={Fuel}
                                 isDark={isDark}
                             />
@@ -399,30 +395,6 @@ function ViewDetailVehicle({
                                 }
                                 icon={Settings2}
                                 text="Specification"
-                                isDark={isDark}
-                            />
-
-                            <TabButton
-                                active={
-                                    activeTab === "features"
-                                }
-                                onClick={() =>
-                                    setActiveTab("features")
-                                }
-                                icon={Car}
-                                text="Features"
-                                isDark={isDark}
-                            />
-
-                            <TabButton
-                                active={
-                                    activeTab === "documents"
-                                }
-                                onClick={() =>
-                                    setActiveTab("documents")
-                                }
-                                icon={FileText}
-                                text="Documents"
                                 isDark={isDark}
                             />
                         </div>
@@ -467,70 +439,6 @@ function ViewDetailVehicle({
                                             </div>
                                         );
                                     })}
-                                </div>
-                            )}
-
-                            {/* Features */}
-                            {activeTab === "features" && (
-                                <div>
-                                    {vehicle.features?.length > 0 ? (
-                                        <div className="grid grid-cols-2 gap-3">
-                                            {vehicle.features.map(
-                                                (feature, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className={`rounded-lg px-3 py-3 text-sm ${isDark
-                                                                ? "bg-[#1b222c] text-gray-300"
-                                                                : "bg-white text-gray-700"
-                                                            }`}
-                                                    >
-                                                        ✓ {feature}
-                                                    </div>
-                                                )
-                                            )}
-                                        </div>
-                                    ) : (
-                                        <p className="py-8 text-center text-sm opacity-50">
-                                            No features available
-                                        </p>
-                                    )}
-                                </div>
-                            )}
-
-                            {/* Documents */}
-                            {activeTab === "documents" && (
-                                <div className="space-y-3">
-                                    {vehicle.documents?.length > 0 ? (
-                                        vehicle.documents.map(
-                                            (document, index) => (
-                                                <div
-                                                    key={index}
-                                                    className={`flex items-center justify-between rounded-lg p-3 ${isDark
-                                                            ? "bg-[#1b222c]"
-                                                            : "bg-white"
-                                                        }`}
-                                                >
-                                                    <div className="flex items-center gap-3">
-                                                        <FileText
-                                                            size={18}
-                                                            className="text-blue-500"
-                                                        />
-
-                                                        <span className="text-sm">
-                                                            {document.name ||
-                                                                `Document ${index +
-                                                                1
-                                                                }`}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            )
-                                        )
-                                    ) : (
-                                        <p className="py-8 text-center text-sm opacity-50">
-                                            No documents available
-                                        </p>
-                                    )}
                                 </div>
                             )}
                         </div>
@@ -628,7 +536,7 @@ function TabButton({
     return (
         <button
             onClick={onClick}
-            className={`flex flex-1 items-center justify-center gap-2 px-3 py-3 text-xs font-medium transition ${active
+            className={`flex flex-1 items-center justify-center rounded-lg gap-2 px-3 py-3 text-xs font-medium transition ${active
                     ? "bg-blue-600 text-white"
                     : isDark
                         ? "text-gray-400 hover:bg-[#1b222c] hover:text-white"

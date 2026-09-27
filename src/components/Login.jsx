@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../Store/Filter/DarkSlice";
+import { FaCar } from "react-icons/fa";
 
 export default function Login({
     open = true,
@@ -100,12 +101,7 @@ export default function Login({
             >
                 <div className="mb-5 flex items-start justify-between">
                     <div className="flex items-center gap-2">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" className="text-blue-500">
-                            <path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M3 13h18v4a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-11v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-                            <circle cx="7.5" cy="17.5" r="1.4" fill="currentColor" />
-                            <circle cx="16.5" cy="17.5" r="1.4" fill="currentColor" />
-                        </svg>
+                        <div className="text-2xl text-blue-500"><FaCar /></div>
                         <span className={`text-sm font-semibold tracking-tight ${t.title}`}>Vechicle</span>
                     </div>
                     <button
@@ -142,7 +138,7 @@ export default function Login({
                             autoComplete="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="you@example.com"
+                            placeholder="rothna@gmail.com"
                             className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition-colors ${t.input}`}
                         />
                     </div>

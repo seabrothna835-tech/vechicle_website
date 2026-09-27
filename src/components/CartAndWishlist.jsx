@@ -1,24 +1,29 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Heart, ShoppingCart, X } from 'lucide-react'
-import { removeFavorite, removeItem, setPanelOpen } from '../Store/CartSlice'
+import { CalendarCheck, Heart, ShoppingCart, X } from 'lucide-react'
+import { completeBooking, removeBooking, removeFavorite, removeItem, setPanelOpen } from '../Store/CartSlice'
 import { BookingItem } from './BookingItem'
 import ViewDetailVehicle from './ViewDetailVechicle'
 
 function CartAndWishlist() {
     const dispatch = useDispatch()
     const isDark = useSelector((state) => state.data.isDark)
-    const { cartItems, wishlist, panelOpen } = useSelector((state) => state.cart)
+    const {
+        cartItems = [],
+        wishlist = [],
+        bookings = [],
+        panelOpen,
+    } = useSelector((state) => state.cart)
     const [activeTab, setActiveTab] = useState('cart')
     const [itemCheck, setItemCheck] = useState()
     const [openCheck, setOpenCheck] = useState(false)
     const [detailItem, setDetailItem] = useState(null)
     if (!panelOpen) return null
 
-    const items = activeTab === 'cart' ? cartItems : wishlist
-    const remove = activeTab === 'cart' ? removeItem : removeFavorite
+    const items = activeTab === 'cart' ? cartItems : activeTab === 'wishlist' ? wishlist : bookings
+    const remove = activeTab === 'cart' ? removeItem : activeTab === 'wishlist' ? removeFavorite : removeBooking
     const handleItemAction = (item) => {
-        if (activeTab === 'wishlist') {
+        if (activeTab !== 'cart') {
             setDetailItem(item)
             return
         }
@@ -44,12 +49,15 @@ function CartAndWishlist() {
                     </button>
                 </div>
 
-                <div className={`grid grid-cols-2 border-b p-2 ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
+                <div className={`grid grid-cols-3 border-b p-2 ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
                     <button type="button" onClick={() => setActiveTab('cart')} className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${activeTab === 'cart' ? 'bg-blue-600 text-white' : 'text-slate-500'}`}>
                         <ShoppingCart size={16} /> Bag ({cartItems.length})
                     </button>
                     <button type="button" onClick={() => setActiveTab('wishlist')} className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${activeTab === 'wishlist' ? 'bg-rose-500 text-white' : 'text-slate-500'}`}>
                         <Heart size={16} /> Favorites ({wishlist.length})
+                    </button>
+                    <button type="button" onClick={() => setActiveTab('booking')} className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${activeTab === 'booking' ? 'bg-emerald-600 text-white' : 'text-slate-500'}`}>
+                        <CalendarCheck size={16} /> Booking ({bookings.length})
                     </button>
                 </div>
                 <div className="flex-1 space-y-3 overflow-y-auto p-4">
@@ -62,7 +70,7 @@ function CartAndWishlist() {
                             )}
 
                             <p className="mt-3 font-semibold">
-                                {activeTab === 'cart' ? 'Your cart is empty' : 'No favorites yet'}
+                                {activeTab === 'cart' ? 'Your cart is empty' : activeTab === 'wishlist' ? 'No favorites yet' : 'No bookings yet'}
                             </p>
 
                             <p className="mt-1 text-sm">
@@ -180,8 +188,10 @@ function CartAndWishlist() {
                     isOpen={openCheck}
                     onClose={() => setOpenCheck(false)}
                     item={itemCheck}
-                    onAddToCart={(data) => console.log("cart", data)}
-                    onAddToWishlist={(data) => console.log("wishlist", data)}
+                    onBookingComplete={(booking) => {
+                        dispatch(completeBooking({ booking, item: itemCheck }))
+                        setActiveTab('booking')
+                    }}
                 />
             }
             {detailItem && (

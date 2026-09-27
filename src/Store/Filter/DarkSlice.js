@@ -4,7 +4,8 @@ const initialState = {
     isDark: true,
     isLogin : false,
     isRegister : false,
-    isAuthenticated: false
+    isAuthenticated: false,
+    showLogoutConfirm: false
 };
 
 export const dataSlice = createSlice({
@@ -22,10 +23,13 @@ export const dataSlice = createSlice({
         },
         setAuthenticated: (state, action) => {
             state.isAuthenticated = action.payload
+        },
+        setShowLogoutConfirm: (state, action) => {
+            state.showLogoutConfirm = action.payload
         }
     },
 });
 
-export const { setDark, setLogin, setRegister, setAuthenticated } = dataSlice.actions;
+export const { setDark, setLogin, setRegister, setAuthenticated, setShowLogoutConfirm } = dataSlice.actions;
 
 export default dataSlice.reducer;

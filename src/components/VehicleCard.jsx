@@ -44,7 +44,7 @@ export function VehicleCard({ v, vehicle }) {
                     {/* ================= STATUS ================= */}
                     <div className="absolute left-2 top-2">
                         <div
-                            className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs  shadow-lg backdrop-blur-md ${String(item.status ?? '').toLowerCase() === "available"
+                            className={`flex items-center gap-2 rounded-full px-2 py-1 text-xs  shadow-lg backdrop-blur-md ${String(item.status ?? '').toLowerCase() === "available"
                                 ? "bg-emerald-600/95 text-white"
                                 : String(item.status ?? '').toLowerCase() === "maintenance"
                                     ? "bg-amber-500/95 text-white"
@@ -255,18 +255,6 @@ export function VehicleCard({ v, vehicle }) {
                     >
                         View details
                     </button>
-
-                    {/* Delete */}
-                    {/* <button
-                        type="button"
-                        onClick={() => onDelete?.(item)}
-                        className={`p-2 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 ${isDark
-                            ? "border-[#7D2735] bg-[#301624] text-[#FF4257] hover:bg-[#401A2A]"
-                            : "border-[#FFD0D5] bg-[#FFF0F1] text-[#EF3340] hover:bg-[#FFE5E8]"
-                            }`}
-                    >
-                        <Trash2 size={16} strokeWidth={2} />
-                    </button> */}
                 </div>
             </div>
         </div>

@@ -75,7 +75,7 @@ export function BookingItem({
     isOpen,
     onClose,
     item,
-    onAddToCart,
+    onBookingComplete,
 }) {
     const isDark = useSelector((state)=>state.data.isDark)
     const isAuthenticated = useSelector((state) => state.data.isAuthenticated)
@@ -94,7 +94,7 @@ export function BookingItem({
     if (!isOpen || !item) return null;
 
     if (showFee) {
-        return <GetFee open booking={showFee} onClose={onClose} />;
+        return <GetFee open booking={showFee} onClose={onClose} onBookingComplete={onBookingComplete} />;
     }
 
     const handleCart = (data) => {
@@ -103,7 +103,6 @@ export function BookingItem({
             window.setTimeout(() => setWarning(""), 2500);
             return;
         }
-        onAddToCart?.(data);
         setShowFee({
             ...data.item,
             quantity: data.quantity,
