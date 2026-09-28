@@ -141,21 +141,13 @@ export default function GetFee({
         setIsSending(true);
         setSendError("");
         try {
-            const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-            const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-
-            if (!token || !chatId) {
-                throw new Error("Telegram is not configured");
-            }
-
-            const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            const response = await fetch("/api/send-telegram", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    chat_id: chatId,
-                    text: telegramMessage,
+                    message: telegramMessage,
                 }),
             });
 

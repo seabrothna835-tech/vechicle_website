@@ -6,7 +6,7 @@ export default async function handler(request, response) {
         });
     }
 
-    const { message } = request.body ?? {};
+    const message = request.body?.message ?? request.body?.text;
 
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
