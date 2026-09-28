@@ -1,0 +1,40 @@
+{
+    "fuelTypes": [
+        {
+            "id": "1",
+            "value": "PETROL",
+            "label": "Petrol"
+        },
+        {
+            "id": "2",
+            "value": "DIESEL",
+            "label": "Diesel"
+        },
+        {
+            "id": "3",
+            "value": "ELECTRIC",
+            "label": "Electric"
+        },
+        {
+            "id": "4",
+            "value": "HYBRID",
+            "label": "Hybrid"
+        },
+        {
+            "id": "5",
+            "value": "PLUG_IN_HYBRID",
+            "label": "Plug-in Hybrid"
+        },
+        {
+            "id": "6",
+            "value": "CNG",
+            "label": "CNG"
+        },
+        {
+            "id": "7",
+            "value": "LPG",
+            "label": "LPG"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
+}

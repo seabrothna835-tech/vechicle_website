@@ -1,0 +1,47 @@
+{
+    "categories": [
+        {
+            "id": "1",
+            "categoryName": "Sedan",
+            "description": "Passenger car with four doors and a separate trunk",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "2",
+            "categoryName": "SUV",
+            "description": "Sport Utility Vehicle designed for passengers and mixed road conditions",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "3",
+            "categoryName": "Pickup Truck",
+            "description": "Vehicle with an open cargo bed for transporting goods",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "5",
+            "categoryName": "Coupe",
+            "description": "Sporty passenger car generally designed with two doors",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "6",
+            "categoryName": "MPV",
+            "description": "Multi-Purpose Vehicle designed for carrying multiple passengers",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "7",
+            "categoryName": "Van",
+            "description": "Large vehicle designed for transporting passengers or cargo",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "8",
+            "categoryName": "Crossover",
+            "description": "Vehicle combining features of an SUV and a passenger car",
+            "status": "ACTIVE"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,82 @@
+{
+    "brands": [
+        {
+            "id": "1",
+            "brandName": "Toyota",
+            "description": "Japanese automotive manufacturer",
+            "country": "Japan",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "2",
+            "brandName": "Honda",
+            "description": "Japanese automotive manufacturer",
+            "country": "Japan",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "3",
+            "brandName": "Nissan",
+            "description": "Japanese automotive manufacturer",
+            "country": "Japan",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "4",
+            "brandName": "Mazda",
+            "description": "Japanese automotive manufacturer",
+            "country": "Japan",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "5",
+            "brandName": "Hyundai",
+            "description": "South Korean automotive manufacturer",
+            "country": "South Korea",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "6",
+            "brandName": "Kia",
+            "description": "South Korean automotive manufacturer",
+            "country": "South Korea",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "7",
+            "brandName": "BMW",
+            "description": "German luxury automotive manufacturer",
+            "country": "Germany",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "8",
+            "brandName": "Mercedes-Benz",
+            "description": "German luxury automotive manufacturer",
+            "country": "Germany",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "9",
+            "brandName": "Ford",
+            "description": "American automotive manufacturer",
+            "country": "United States",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "13",
+            "brandName": "Lexus",
+            "description": "Japanese luxury automotive brand",
+            "country": "Japan",
+            "status": "ACTIVE"
+        },
+        {
+            "id": "15",
+            "brandName": "Tesla",
+            "description": "American electric vehicle manufacturer",
+            "country": "United States",
+            "status": "ACTIVE"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
+}

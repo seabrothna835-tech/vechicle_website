@@ -1,0 +1,189 @@
+{
+    "models": [
+        {
+            "id": "1",
+            "modelName": "Camry",
+            "brandId": 1,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "2",
+            "modelName": "Corolla",
+            "brandId": 1,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "3",
+            "modelName": "RAV4",
+            "brandId": 1,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "5",
+            "modelName": "Civic",
+            "brandId": 2,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "6",
+            "modelName": "CR-V",
+            "brandId": 2,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "7",
+            "modelName": "Accord",
+            "brandId": 2,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "8",
+            "modelName": "X5",
+            "brandId": 7,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "9",
+            "modelName": "3 Series",
+            "brandId": 7,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "10",
+            "modelName": "C-Class",
+            "brandId": 8,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "11",
+            "modelName": "GLC",
+            "brandId": 8,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "12",
+            "modelName": "Model 3",
+            "brandId": 15,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "14",
+            "modelName": "Tucson",
+            "brandId": 5,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "15",
+            "modelName": "Elantra",
+            "brandId": 5,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "16",
+            "modelName": "Santa Fe",
+            "brandId": 5,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "17",
+            "modelName": "Sportage",
+            "brandId": 6,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "18",
+            "modelName": "CX-5",
+            "brandId": 4,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "19",
+            "modelName": "Mazda3",
+            "brandId": 4,
+            "categoryId": 1,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "20",
+            "modelName": "Forester",
+            "brandId": 14,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "21",
+            "modelName": "Impreza",
+            "brandId": 14,
+            "categoryId": 4,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "22",
+            "modelName": "Mustang",
+            "brandId": 9,
+            "categoryId": 5,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "23",
+            "modelName": "Ranger",
+            "brandId": 9,
+            "categoryId": 3,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "24",
+            "modelName": "Golf",
+            "brandId": 11,
+            "categoryId": 4,
+            "year": 2025,
+            "status": "ACTIVE"
+        },
+        {
+            "id": "25",
+            "modelName": "Tiguan",
+            "brandId": 11,
+            "categoryId": 2,
+            "year": 2025,
+            "status": "ACTIVE"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
+}

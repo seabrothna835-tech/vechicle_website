@@ -1,0 +1,35 @@
+{
+    "statuses": [
+        {
+            "id": "1",
+            "value": "IN_STOCK",
+            "label": "In Stock"
+        },
+        {
+            "id": "3",
+            "value": "RESERVED",
+            "label": "Reserved"
+        },
+        {
+            "id": "4",
+            "value": "SERVICE",
+            "label": "Service"
+        },
+        {
+            "id": "5",
+            "value": "AVAILABLE",
+            "label": "Available"
+        },
+        {
+            "id": "7",
+            "value": "IN_TRANSIT",
+            "label": "In Transit"
+        },
+        {
+            "id": "8",
+            "value": "DAMAGED",
+            "label": "Damaged"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
+}
