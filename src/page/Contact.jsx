@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import { FaArrowRight, FaClock, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import emailjs from "@emailjs/browser";
+import GoogleMap from "../components/GoogleMap";
+import { FaMapLocationDot } from "react-icons/fa6";
+
 
 function Contact() {
 	const form = useRef();
@@ -104,6 +107,12 @@ function Contact() {
 								</button>
 							</form>
 						)}
+					</div>
+				</section>
+				<section className="scroll-pop mx-auto w-full max-w-6xl px-6 pb-16 sm:px-10 lg:px-20">
+					<h1 className={`text-3xl font-extrabold ${heading} flex gap-3 items-center p-4`}><FaMapLocationDot className="text-blue-500"/> We are at here :</h1>
+					<div className="overflow-hidden rounded-[30px] border border-slate-200 bg-white/80 p-3 shadow-[0_18px_40px_rgba(15,23,42,0.08)] backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/60">
+						<GoogleMap />
 					</div>
 				</section>
 			</main>
